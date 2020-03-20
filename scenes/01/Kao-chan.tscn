@@ -1,0 +1,107 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://fonts/OpenSans/OpenSans-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/OpenSans/OpenSans-BoldItalic.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/OpenSans/OpenSans-SemiBold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/OpenSans/OpenSans-SemiBoldItalic.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://fonts/OpenSans/OpenSans-LightItalic.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Light.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Italic.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://fonts/OpenSans/OpenSans-ExtraBold.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://addons/live_cards/EmphasisLabel.gd" type="Script" id=11]
+[ext_resource path="res://resources/FontCollection.gd" type="Script" id=12]
+[ext_resource path="res://scripts/01/Kao-chan.gd" type="Script" id=13]
+[ext_resource path="res://shaders/color.tres" type="Shader" id=14]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 50.0
+height = 100.0
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 14 )
+shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 75
+extra_spacing_bottom = -15
+font_data = ExtResource( 9 )
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 12 )
+regular = ExtResource( 5 )
+italic = ExtResource( 9 )
+bold = ExtResource( 1 )
+bold_italic = ExtResource( 2 )
+light = ExtResource( 8 )
+light_italic = ExtResource( 6 )
+semi_bold = ExtResource( 3 )
+semi_bold_italic = ExtResource( 4 )
+extra_bold = ExtResource( 10 )
+extra_bold_italic = ExtResource( 7 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "^ - ^)°" ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "start"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.7, 1.9, 2.1, 2.3, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "^ - ^)", "· - ·)", "- - -)", "· - ·)", "- - -)", "· - ·)", "· - ·)/" ]
+}
+
+[node name="Kao-chan" type="KinematicBody2D"]
+script = ExtResource( 13 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+material = SubResource( 2 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -50.0
+margin_right = 100.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 100, 50 )
+custom_fonts/font = SubResource( 3 )
+text = "^ - ^)°"
+align = 1
+autowrap = true
+clip_text = true
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+font_size = 75
+font_collection = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 5 )
+anims/start = SubResource( 6 )

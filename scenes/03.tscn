@@ -1,0 +1,842 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://fonts/OpenSans/OpenSans-SemiBold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Italic.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/OpenSans/OpenSans-ExtraBold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://addons/live_cards/LiveCards.gd" type="Script" id=5]
+[ext_resource path="res://resources/FontCollection.gd" type="Script" id=6]
+[ext_resource path="res://addons/live_cards/EmphasisLabel.gd" type="Script" id=7]
+[ext_resource path="res://shaders/color.tres" type="Shader" id=8]
+[ext_resource path="res://fonts/OpenSans/OpenSans-SemiBoldItalic.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://fonts/OpenSans/OpenSans-LightItalic.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Light.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://icons/multiplayer.svg" type="Texture" id=12]
+[ext_resource path="res://fonts/OpenSans/OpenSans-BoldItalic.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Bold.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://addons/live_cards/cards/Title.tscn" type="PackedScene" id=16]
+[ext_resource path="res://addons/live_cards/cards/TitleAndPicture.tscn" type="PackedScene" id=17]
+[ext_resource path="res://addons/live_cards/cards/TitleAndBody.tscn" type="PackedScene" id=18]
+[ext_resource path="res://icon.png" type="Texture" id=19]
+[ext_resource path="res://shaders/Accent.tres" type="Material" id=20]
+[ext_resource path="res://scripts/03/Input.gd" type="Script" id=21]
+[ext_resource path="res://scenes/03/Godot.tscn" type="PackedScene" id=22]
+[ext_resource path="res://icons/cannon.svg" type="Texture" id=23]
+[ext_resource path="res://textures/03/arrow.png" type="Texture" id=24]
+[ext_resource path="res://textures/03/circle_o.png" type="Texture" id=25]
+[ext_resource path="res://textures/03/circle.png" type="Texture" id=26]
+[ext_resource path="res://scripts/03/States.gd" type="Script" id=27]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.137255, 0.12549, 0.12549, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 3 )
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 6 )
+regular = ExtResource( 4 )
+italic = ExtResource( 2 )
+bold = ExtResource( 15 )
+bold_italic = ExtResource( 13 )
+light = ExtResource( 11 )
+light_italic = ExtResource( 10 )
+semi_bold = ExtResource( 1 )
+semi_bold_italic = ExtResource( 9 )
+extra_bold = ExtResource( 3 )
+extra_bold_italic = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+extra_spacing_bottom = -8
+font_data = ExtResource( 1 )
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 6 )
+regular = ExtResource( 4 )
+italic = ExtResource( 2 )
+bold = ExtResource( 15 )
+bold_italic = ExtResource( 13 )
+light = ExtResource( 11 )
+light_italic = ExtResource( 10 )
+semi_bold = ExtResource( 1 )
+semi_bold_italic = ExtResource( 9 )
+extra_bold = ExtResource( 3 )
+extra_bold_italic = ExtResource( 14 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 8 )
+shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 75
+font_data = ExtResource( 2 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 48, 48 )
+
+[sub_resource type="ConcavePolygonShape2D" id=10]
+segments = PoolVector2Array( 0, 0, 1920, 0, 1920, 0, 1920, 1080, 1920, 1080, 0, 1080, 0, 1080, 0, 0 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 50
+font_data = ExtResource( 4 )
+
+[node name="LiveCards" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="00" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" type="Panel" parent="00"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.58667
+margin_bottom = 1.58667
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Number" type="Label" parent="00/Panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = -79.9999
+margin_right = -250.0
+margin_bottom = -30.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
+text = "1"
+align = 2
+valign = 1
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+font_size = 40
+font_collection = SubResource( 14 )
+
+[node name="Course" type="Label" parent="00/Panel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = -84.9999
+margin_right = 1051.0
+margin_bottom = -30.0
+rect_pivot_offset = Vector2( 0, 55 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
+text = "CC5408 - Taller de Diseño y Desarrollo de Videojuegos"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+font_size = 40
+font_collection = SubResource( 15 )
+
+[node name="Gamepads" type="TextureRect" parent="00/Panel"]
+material = SubResource( 6 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -498.0
+margin_top = -370.0
+margin_right = -29.9996
+margin_bottom = -30.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 468, 340 )
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="01" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="01" instance=ExtResource( 16 )]
+
+[node name="Title" parent="01/Panel" index="0"]
+text = "Inputs, físicas,
+mecánicas"
+
+[node name="Subtitle" parent="01/Panel" index="1"]
+visible = false
+
+[node name="Contact" type="Label" parent="01/Panel"]
+material = ExtResource( 20 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -879.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = 99.0
+custom_fonts/font = SubResource( 7 )
+text = "Elías Zelada - ezelada@dcc.uchile.cl"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Input" type="Node2D" parent="01"]
+position = Vector2( 0, 1.58667 )
+script = ExtResource( 21 )
+
+[node name="Kao-chan" type="Label" parent="01/Input"]
+material = ExtResource( 20 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1430.0
+margin_top = 855.0
+margin_right = 1622.0
+margin_bottom = 958.0
+custom_fonts/font = SubResource( 8 )
+text = "· - ·)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Godot" type="KinematicBody2D" parent="01/Input"]
+position = Vector2( 960, 650 )
+
+[node name="Sprite" type="Sprite" parent="01/Input/Godot"]
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 19 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="01/Input/Godot"]
+shape = SubResource( 9 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="01/Input"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="01/Input/StaticBody2D"]
+shape = SubResource( 10 )
+
+[node name="02" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="02" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="02/Panel" index="0"]
+text = "Mecánicas"
+
+[node name="Text" parent="02/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Elemento principal
+ [b]>[/b]    Interacciones y relaciones
+ [b]>[/b]    Innovación"
+text = " >    Elemento principal
+ >    Interacciones y relaciones
+ >    Innovación"
+
+[node name="03" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="03" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="03/Panel" index="0"]
+text = "Mecánicas"
+
+[node name="Text" parent="03/Panel" index="1"]
+bbcode_text = " [b]1)[/b]   Espacio
+ [b]2)[/b]   Tiempo
+ [b]3)[/b]   Objetos, atributos y estados
+ [b]4)[/b]   Acciones
+ [b]5)[/b]   Reglas
+ [b]6)[/b]   Habilidad
+ [b]7)[/b]   Oportunidad"
+text = " 1)   Espacio
+ 2)   Tiempo
+ 3)   Objetos, atributos y estados
+ 4)   Acciones
+ 5)   Reglas
+ 6)   Habilidad
+ 7)   Oportunidad"
+
+[node name="04" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="04" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="04/Panel" index="0"]
+text = "Espacio"
+
+[node name="Text" parent="04/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Discreto o continuo
+ [b]>[/b]    Número de dimensiones
+ [b]>[/b]    Zonas delimitas (conectadas) "
+text = " >    Discreto o continuo
+ >    Número de dimensiones
+ >    Zonas delimitas (conectadas) "
+
+[node name="05" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="05" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="05/Panel" index="0"]
+text = "Espacio"
+
+[node name="Picture" parent="05/Panel" index="1"]
+visible = false
+
+[node name="Node2D" type="Node2D" parent="05/Panel"]
+position = Vector2( 960, 540 )
+
+[node name="icon" type="Sprite" parent="05/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( -75, 0 )
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="icon2" type="Sprite" parent="05/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 74.9999, 0 )
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="icon3" type="Sprite" parent="05/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 0, -75 )
+rotation = 1.5708
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="icon4" type="Sprite" parent="05/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 0, 75 )
+rotation = 1.5708
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="06" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="06" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="06/Panel" index="0"]
+text = "Espacio"
+
+[node name="Picture" parent="06/Panel" index="1"]
+visible = false
+
+[node name="Node2D" type="Node2D" parent="06/Panel"]
+position = Vector2( 960, 540 )
+
+[node name="icon" type="Sprite" parent="06/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( -75, 0 )
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="icon2" type="Sprite" parent="06/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 74.9999, 0 )
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="icon3" type="Sprite" parent="06/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 0, -75 )
+rotation = 1.5708
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="icon4" type="Sprite" parent="06/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 0, 75 )
+rotation = 1.5708
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="Node2D3" type="Node2D" parent="06/Panel"]
+position = Vector2( 1560, 540 )
+
+[node name="icon" type="Sprite" parent="06/Panel/Node2D3"]
+material = ExtResource( 20 )
+position = Vector2( -75, 0 )
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="icon2" type="Sprite" parent="06/Panel/Node2D3"]
+material = ExtResource( 20 )
+position = Vector2( 74.9999, 0 )
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="icon3" type="Sprite" parent="06/Panel/Node2D3"]
+material = ExtResource( 20 )
+position = Vector2( 0, -75 )
+rotation = 1.5708
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="icon4" type="Sprite" parent="06/Panel/Node2D3"]
+material = ExtResource( 20 )
+position = Vector2( 0, 75 )
+rotation = 1.5708
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="Node2D2" type="Node2D" parent="06/Panel"]
+position = Vector2( 360, 540 )
+
+[node name="icon" type="Sprite" parent="06/Panel/Node2D2"]
+material = ExtResource( 20 )
+position = Vector2( -75, 0 )
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="icon2" type="Sprite" parent="06/Panel/Node2D2"]
+material = ExtResource( 20 )
+position = Vector2( 74.9999, 0 )
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="icon3" type="Sprite" parent="06/Panel/Node2D2"]
+material = ExtResource( 20 )
+position = Vector2( 0, -75 )
+rotation = 1.5708
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="icon4" type="Sprite" parent="06/Panel/Node2D2"]
+material = ExtResource( 20 )
+position = Vector2( 0, 75 )
+rotation = 1.5708
+scale = Vector2( 0.2, 8 )
+texture = ExtResource( 19 )
+
+[node name="icon" type="Sprite" parent="06/Panel"]
+position = Vector2( 329.387, 511.375 )
+texture = ExtResource( 19 )
+
+[node name="icon2" type="Sprite" parent="06/Panel"]
+position = Vector2( 960, 540 )
+texture = ExtResource( 19 )
+
+[node name="icon3" type="Sprite" parent="06/Panel"]
+position = Vector2( 1595.78, 523.409 )
+texture = ExtResource( 19 )
+
+[node name="07" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="07" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="07/Panel" index="0"]
+text = "Espacio"
+
+[node name="Picture" parent="07/Panel" index="1"]
+visible = false
+
+[node name="Node2D" type="Node2D" parent="07/Panel"]
+position = Vector2( 960, 540 )
+
+[node name="icon" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( -160, 0 )
+scale = Vector2( 0.2, 5 )
+texture = ExtResource( 19 )
+
+[node name="icon16" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+rotation = 0.785398
+scale = Vector2( 0.2, 7 )
+texture = ExtResource( 19 )
+
+[node name="icon17" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+rotation = -0.785398
+scale = Vector2( 0.2, 7 )
+texture = ExtResource( 19 )
+
+[node name="icon2" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+scale = Vector2( 0.2, 5 )
+texture = ExtResource( 19 )
+
+[node name="icon15" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 160, 0 )
+scale = Vector2( 0.2, 5 )
+texture = ExtResource( 19 )
+
+[node name="icon3" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 0, -160 )
+rotation = 1.5708
+scale = Vector2( 0.2, 5 )
+texture = ExtResource( 19 )
+
+[node name="icon4" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+rotation = 1.5708
+scale = Vector2( 0.2, 5 )
+texture = ExtResource( 19 )
+
+[node name="icon14" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 0, 160 )
+rotation = 1.5708
+scale = Vector2( 0.2, 5 )
+texture = ExtResource( 19 )
+
+[node name="icon5" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( -160, 0 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 26 )
+
+[node name="icon6" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 26 )
+
+[node name="icon7" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 160, 0 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 26 )
+
+[node name="icon8" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( -160, 160 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 26 )
+
+[node name="icon9" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 0, 160 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 26 )
+
+[node name="icon10" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 160, 160 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 26 )
+
+[node name="icon11" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( -160, -160 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 26 )
+
+[node name="icon12" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 0, -160 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 26 )
+
+[node name="icon13" type="Sprite" parent="07/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 160, -160 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 26 )
+
+[node name="08" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="08" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="08/Panel" index="0"]
+text = "Tiempo"
+
+[node name="Text" parent="08/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Discreto o continuo
+ [b]>[/b]    Turnos
+ [b]>[/b]    Límites
+ [b]>[/b]    Carreras
+ [b]>[/b]    Control"
+text = " >    Discreto o continuo
+ >    Turnos
+ >    Límites
+ >    Carreras
+ >    Control"
+
+[node name="09" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="09" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="09/Panel" index="0"]
+text = "Objetos, atributos y estados"
+
+[node name="Text" parent="09/Panel" index="1"]
+visible = false
+
+[node name="Node2D" type="Node2D" parent="09"]
+visible = false
+
+[node name="States" type="Node2D" parent="09/Node2D"]
+position = Vector2( 200, 0 )
+script = ExtResource( 27 )
+
+[node name="Shield" type="Sprite" parent="09/Node2D/States"]
+position = Vector2( 710, 355 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 25 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="09/Node2D/States/Shield"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = -150.0
+margin_right = -150.0
+margin_bottom = -150.0
+custom_fonts/font = SubResource( 11 )
+text = "Shield"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="circle_o" type="Sprite" parent="09/Node2D/States/Shield"]
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 25 )
+
+[node name="NoShield" type="Sprite" parent="09/Node2D/States"]
+position = Vector2( 1210, 355 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 25 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label2" type="Label" parent="09/Node2D/States/NoShield"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = -150.0
+margin_right = -150.0
+margin_bottom = -150.0
+custom_fonts/font = SubResource( 12 )
+text = "No shield"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Death" type="Sprite" parent="09/Node2D/States"]
+position = Vector2( 710, 855 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 25 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label3" type="Label" parent="09/Node2D/States/Death"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = -150.0
+margin_right = -150.0
+margin_bottom = -150.0
+custom_fonts/font = SubResource( 13 )
+text = "Death"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bleeding" type="Sprite" parent="09/Node2D/States"]
+position = Vector2( 1210, 855 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 25 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label3" type="Label" parent="09/Node2D/States/Bleeding"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -150.0
+margin_top = -150.0
+margin_right = -150.0
+margin_bottom = -150.0
+custom_fonts/font = SubResource( 13 )
+text = "Bleeding"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrow" type="Sprite" parent="09/Node2D/States"]
+position = Vector2( 960, 305 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 24 )
+
+[node name="Label2" type="Label" parent="09/Node2D/States/arrow"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -571.5
+margin_top = -144.5
+margin_right = 71.5
+margin_bottom = 4.49996
+custom_fonts/font = SubResource( 11 )
+text = "shield == 0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrow2" type="Sprite" parent="09/Node2D/States"]
+position = Vector2( 960, 405 )
+rotation = 3.14159
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 24 )
+
+[node name="Label3" type="Label" parent="09/Node2D/States/arrow2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1.52588e-05
+margin_top = -30.0
+margin_right = 500.0
+margin_bottom = 50.0
+rect_rotation = 180.0
+custom_fonts/font = SubResource( 11 )
+text = "shield > 0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrow3" type="Sprite" parent="09/Node2D/States"]
+position = Vector2( 960, 855 )
+rotation = 3.14159
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 24 )
+
+[node name="Label4" type="Label" parent="09/Node2D/States/arrow3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1.52588e-05
+margin_top = 30.0
+margin_right = 500.0
+margin_bottom = 110.0
+rect_rotation = 180.0
+custom_fonts/font = SubResource( 11 )
+text = "timeout"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrow5" type="Sprite" parent="09/Node2D/States"]
+position = Vector2( 960, 605 )
+rotation = 3.92699
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 24 )
+
+[node name="Label5" type="Label" parent="09/Node2D/States/arrow5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 1.52588e-05
+margin_top = 30.0
+margin_right = 500.0
+margin_bottom = 110.0
+rect_rotation = 180.0
+custom_fonts/font = SubResource( 11 )
+text = "kill"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arrow4" type="Sprite" parent="09/Node2D/States"]
+position = Vector2( 1210, 605 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 24 )
+
+[node name="Label3" type="Label" parent="09/Node2D/States/arrow4"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -571.5
+margin_top = -144.5
+margin_right = 71.5
+margin_bottom = 4.49999
+custom_fonts/font = SubResource( 11 )
+text = "life == 0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cannon" type="Sprite" parent="09/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 215, 800 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 23 )
+
+[node name="Godot" parent="09/Node2D" instance=ExtResource( 22 )]
+position = Vector2( 500, 500 )
+
+[editable path="01/Panel"]
+
+[editable path="02/Panel"]
+
+[editable path="03/Panel"]
+
+[editable path="04/Panel"]
+
+[editable path="05/Panel"]
+
+[editable path="06/Panel"]
+
+[editable path="07/Panel"]
+
+[editable path="08/Panel"]
+
+[editable path="09/Panel"]

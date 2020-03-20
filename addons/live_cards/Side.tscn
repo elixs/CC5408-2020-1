@@ -1,0 +1,97 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/live_cards/Side.gd" type="Script" id=1]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreateLiveCards" type="Button" parent="."]
+margin_right = 1920.0
+margin_bottom = 20.0
+text = "Create Live Cards"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddEmpty" type="Button" parent="."]
+margin_top = 24.0
+margin_right = 1920.0
+margin_bottom = 44.0
+text = "Add Empty Card"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddTitle" type="Button" parent="."]
+margin_top = 48.0
+margin_right = 1920.0
+margin_bottom = 68.0
+text = "Add Title Card"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddTitleAndBody" type="Button" parent="."]
+margin_top = 72.0
+margin_right = 1920.0
+margin_bottom = 92.0
+text = "Add Title And Body Card"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddTitleAndPicture" type="Button" parent="."]
+margin_top = 96.0
+margin_right = 1920.0
+margin_bottom = 116.0
+text = "Add Title And Picture Card"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="HBoxContainer" parent="."]
+margin_top = 120.0
+margin_right = 1920.0
+margin_bottom = 140.0
+
+[node name="Prev" type="Button" parent="Controls"]
+margin_right = 637.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "<"
+
+[node name="Next" type="Button" parent="Controls"]
+margin_left = 641.0
+margin_right = 1278.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Number" type="Label" parent="Controls"]
+margin_left = 1282.0
+margin_top = 3.0
+margin_right = 1920.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "0"
+align = 1
+valign = 1
+
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_top = 91.0
+margin_right = 1920.0
+margin_bottom = 221.0
+filters = PoolStringArray( "*.tscn" )
+current_file = ".tscn"
+current_path = "res://.tscn"
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,459 @@
+[gd_scene load_steps=45 format=2]
+
+[ext_resource path="res://shaders/Accent.tres" type="Material" id=1]
+[ext_resource path="res://fonts/OpenSans/OpenSans-SemiBold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://textures/01/bender.jpg" type="Texture" id=3]
+[ext_resource path="res://addons/live_cards/cards/TitleAndPicture.tscn" type="PackedScene" id=4]
+[ext_resource path="res://videos/4.ogv" type="VideoStream" id=5]
+[ext_resource path="res://scripts/01/Time.gd" type="Script" id=6]
+[ext_resource path="res://fonts/OpenSans/OpenSans-ExtraBold.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://addons/live_cards/LiveCards.gd" type="Script" id=11]
+[ext_resource path="res://addons/live_cards/cards/TitleAndBody.tscn" type="PackedScene" id=12]
+[ext_resource path="res://addons/live_cards/EmphasisLabel.gd" type="Script" id=13]
+[ext_resource path="res://icons/multiplayer.svg" type="Texture" id=14]
+[ext_resource path="res://shaders/color.tres" type="Shader" id=15]
+[ext_resource path="res://addons/live_cards/cards/Title.tscn" type="PackedScene" id=16]
+[ext_resource path="res://icons/key.svg" type="Texture" id=18]
+[ext_resource path="res://icons/finish-flag.svg" type="Texture" id=19]
+[ext_resource path="res://scripts/01/Flag.gd" type="Script" id=20]
+[ext_resource path="res://scripts/01/Key.gd" type="Script" id=21]
+[ext_resource path="res://scripts/01/VideoPlayer.gd" type="Script" id=22]
+[ext_resource path="res://videos/3.ogv" type="VideoStream" id=23]
+[ext_resource path="res://videos/1.ogv" type="VideoStream" id=24]
+[ext_resource path="res://videos/2.ogv" type="VideoStream" id=25]
+[ext_resource path="res://scripts/01/KaoGame.gd" type="Script" id=26]
+[ext_resource path="res://scenes/01/Kao-chan.tscn" type="PackedScene" id=27]
+[ext_resource path="res://addons/live_cards/cards/Empty.tscn" type="PackedScene" id=28]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.137255, 0.12549, 0.12549, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+extra_spacing_bottom = -8
+font_data = ExtResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 15 )
+shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 15 )
+shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="PhysicsMaterial" id=8]
+bounce = 1.0
+
+[sub_resource type="SegmentShape2D" id=9]
+b = Vector2( 1920, 0 )
+
+[sub_resource type="SegmentShape2D" id=10]
+b = Vector2( 1920, 0 )
+
+[sub_resource type="SegmentShape2D" id=11]
+b = Vector2( 0, 1080 )
+
+[sub_resource type="SegmentShape2D" id=12]
+b = Vector2( 0, 1080 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 540, 50 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 140, 100 )
+
+[sub_resource type="CapsuleShape2D" id=15]
+radius = 70.0
+height = 45.0
+
+[sub_resource type="ShaderMaterial" id=16]
+shader = ExtResource( 15 )
+shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
+
+[sub_resource type="Animation" id=17]
+tracks/0/type = "value"
+tracks/0/path = NodePath("FinishFlag:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.3, 1e-05 ), Vector2( 0.3, 0.3 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=18]
+radius = 60.0
+
+[sub_resource type="ShaderMaterial" id=19]
+shader = ExtResource( 15 )
+shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
+
+[sub_resource type="DynamicFont" id=20]
+size = 60
+font_data = ExtResource( 10 )
+
+[node name="LiveCards" type="Node2D"]
+script = ExtResource( 11 )
+
+[node name="00" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" type="Panel" parent="00"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.58667
+margin_bottom = 1.58667
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Number" type="Label" parent="00/Panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = -79.9999
+margin_right = -250.0
+margin_bottom = -30.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
+text = "1"
+align = 2
+valign = 1
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+font_size = 40
+font_collection = SubResource( 3 )
+
+[node name="Course" type="Label" parent="00/Panel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = -84.9999
+margin_right = 1051.0
+margin_bottom = -30.0
+rect_pivot_offset = Vector2( 0, 55 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
+text = "CC5408 - Taller de Diseño y Desarrollo de Videojuegos"
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+font_size = 40
+font_collection = SubResource( 5 )
+
+[node name="Gamepads" type="TextureRect" parent="00/Panel"]
+material = SubResource( 6 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -498.0
+margin_top = -370.0
+margin_right = -29.9996
+margin_bottom = -30.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 468, 340 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="01" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="01" instance=ExtResource( 16 )]
+
+[node name="Subtitle" parent="01/Panel" index="1"]
+visible = false
+
+[node name="Contact" type="Label" parent="01/Panel"]
+material = ExtResource( 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -879.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = 99.0
+custom_fonts/font = SubResource( 7 )
+text = "Elías Zelada - ezelada@dcc.uchile.cl"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KaoGame" type="Node2D" parent="01"]
+script = ExtResource( 26 )
+
+[node name="Limits" type="Node2D" parent="01/KaoGame"]
+
+[node name="Bottom" type="StaticBody2D" parent="01/KaoGame/Limits"]
+physics_material_override = SubResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="01/KaoGame/Limits/Bottom"]
+position = Vector2( 0, 1080 )
+shape = SubResource( 9 )
+
+[node name="Top" type="StaticBody2D" parent="01/KaoGame/Limits"]
+physics_material_override = SubResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="01/KaoGame/Limits/Top"]
+shape = SubResource( 10 )
+
+[node name="Left" type="StaticBody2D" parent="01/KaoGame/Limits"]
+physics_material_override = SubResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="01/KaoGame/Limits/Left"]
+shape = SubResource( 11 )
+
+[node name="Right" type="StaticBody2D" parent="01/KaoGame/Limits"]
+physics_material_override = SubResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="01/KaoGame/Limits/Right"]
+position = Vector2( 1921.95, 0 )
+shape = SubResource( 12 )
+
+[node name="Obstacles" type="StaticBody2D" parent="01/KaoGame/Limits"]
+position = Vector2( 540, 1030 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="01/KaoGame/Limits/Obstacles"]
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="01/KaoGame/Limits/Obstacles"]
+position = Vector2( 1210, -75 )
+shape = SubResource( 14 )
+
+[node name="Flag" type="Area2D" parent="01/KaoGame"]
+position = Vector2( 1763, 789 )
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="01/KaoGame/Flag"]
+shape = SubResource( 15 )
+
+[node name="FinishFlag" type="Sprite" parent="01/KaoGame/Flag"]
+material = SubResource( 16 )
+position = Vector2( 0, 77 )
+scale = Vector2( 0.3, 1e-05 )
+texture = ExtResource( 19 )
+offset = Vector2( 0, -248 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="01/KaoGame/Flag"]
+anims/activate = SubResource( 17 )
+
+[node name="Key" type="Area2D" parent="01/KaoGame"]
+position = Vector2( 90, 700 )
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="01/KaoGame/Key"]
+shape = SubResource( 18 )
+
+[node name="Key" type="Sprite" parent="01/KaoGame/Key"]
+material = SubResource( 19 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 18 )
+
+[node name="Kao-chan" parent="01/KaoGame" instance=ExtResource( 27 )]
+position = Vector2( 960, 650 )
+
+[node name="02" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="02" instance=ExtResource( 12 )]
+visible = false
+
+[node name="Title" parent="02/Panel" index="0"]
+text = "Contexto"
+
+[node name="Text" parent="02/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Administrador
+ [b]>[/b]    Talleres
+ [b]>[/b]    Juegos
+ [b]>[/b]    404"
+text = " >    Administrador
+ >    Talleres
+ >    Juegos
+ >    404"
+
+[node name="03" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="03" instance=ExtResource( 4 )]
+visible = false
+
+[node name="Title" parent="03/Panel" index="0"]
+text = "Contexto"
+
+[node name="Picture" parent="03/Panel" index="1"]
+texture = ExtResource( 3 )
+
+[node name="04" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="04" instance=ExtResource( 12 )]
+visible = false
+
+[node name="Title" parent="04/Panel" index="0"]
+text = "Reglas"
+
+[node name="Text" parent="04/Panel" index="1"]
+bbcode_text = " [b]>[/b]Tres evaluaciones (5 - 10 - 15)
+     [b]1)[/b]    Demo y GDD simplificado
+     [b]2)[/b]    Mecánicas fundamentales
+     [b]3)[/b]    Juego completo
+ [b]>[/b]    Notas
+ [b]>[/b]    Clases
+     [b]>[/b]    Teóricas (Lunes)
+     [b]>[/b]    Prácticas (Viernes)"
+text = " >Tres evaluaciones (5 - 10 - 15)
+     1)    Demo y GDD simplificado
+     2)    Mecánicas fundamentales
+     3)    Juego completo
+ >    Notas
+ >    Clases
+     >    Teóricas (Lunes)
+     >    Prácticas (Viernes)"
+
+[node name="05" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="05" instance=ExtResource( 12 )]
+visible = false
+
+[node name="Title" parent="05/Panel" index="0"]
+text = "Proyecto"
+
+[node name="Text" parent="05/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Juego
+ [b]>[/b]    Grupos de 3 a 4
+ [b]>[/b]    2D - 3D
+ [b]>[/b]    Innovación
+ [b]>[/b]    Fun"
+text = " >    Juego
+ >    Grupos de 3 a 4
+ >    2D - 3D
+ >    Innovación
+ >    Fun"
+
+[node name="06" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="06" instance=ExtResource( 12 )]
+visible = false
+
+[node name="Title" parent="06/Panel" index="0"]
+text = "Presentación"
+
+[node name="Text" parent="06/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Nombre
+ [b]>[/b]    Carrera
+ [b]>[/b]    ¿Qué les gusta de un videojuego?
+ [b]>[/b]    ¿Qué géneros les gustan?"
+text = " >    Nombre
+ >    Carrera
+ >    ¿Qué les gusta de un videojuego?
+ >    ¿Qué géneros les gustan?"
+
+[node name="07" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="07" instance=ExtResource( 28 )]
+visible = false
+
+[node name="CenterContainer" type="CenterContainer" parent="07/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoPlayer" type="VideoPlayer" parent="07/Panel/CenterContainer"]
+margin_left = 704.0
+margin_top = 348.0
+margin_right = 1216.0
+margin_bottom = 732.0
+stream = ExtResource( 24 )
+expand = false
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+streams = [ ExtResource( 24 ), ExtResource( 25 ), ExtResource( 23 ), ExtResource( 5 ) ]
+
+[node name="Time" type="Label" parent="07/Panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -274.0
+margin_top = -113.0
+margin_right = -29.9999
+margin_bottom = -30.0
+custom_fonts/font = SubResource( 20 )
+text = "00:00:00"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="08" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="08" instance=ExtResource( 12 )]
+visible = false
+
+[node name="Title" parent="08/Panel" index="0"]
+text = "Tarea"
+
+[node name="Text" parent="08/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Crear grupo
+ [b]>[/b]    Nombre y Telegram
+ [b]>[/b]    Elegir motor
+     [b]-[/b]    Godot
+
+"
+text = " >    Crear grupo
+ >    Nombre y Telegram
+ >    Elegir motor
+     -    Godot
+
+"
+
+[editable path="01/Panel"]
+
+[editable path="02/Panel"]
+
+[editable path="03/Panel"]
+
+[editable path="04/Panel"]
+
+[editable path="05/Panel"]
+
+[editable path="06/Panel"]
+
+[editable path="08/Panel"]

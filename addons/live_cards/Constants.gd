@@ -1,0 +1,17 @@
+extends Node
+
+class_name Constants
+
+enum Emphasis  { 
+	NONE,
+	REGULAR,
+	ITALIC,
+	BOLD,
+	BOLD_ITALIC,
+	LIGHT,
+	LIGHT_ITALICS,
+	SEMI_BOLD,
+	SEMI_BOLD_ITALICS,
+	EXTRA_BOLD,
+	EXTRA_BOLD_ITALICS
+}

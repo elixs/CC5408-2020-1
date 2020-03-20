@@ -1,0 +1,134 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://shaders/color.tres" type="Shader" id=1]
+[ext_resource path="res://icons/multiplayer.svg" type="Texture" id=2]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/OpenSans/OpenSans-SemiBold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Italic.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://fonts/OpenSans/OpenSans-SemiBoldItalic.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://fonts/OpenSans/OpenSans-LightItalic.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://fonts/OpenSans/OpenSans-BoldItalic.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Light.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://fonts/OpenSans/OpenSans-ExtraBold.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://resources/FontCollection.gd" type="Script" id=13]
+[ext_resource path="res://addons/live_cards/LiveCards.gd" type="Script" id=14]
+[ext_resource path="res://addons/live_cards/EmphasisLabel.gd" type="Script" id=15]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.137255, 0.12549, 0.12549, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 12 )
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 13 )
+regular = ExtResource( 5 )
+italic = ExtResource( 6 )
+bold = ExtResource( 3 )
+bold_italic = ExtResource( 9 )
+light = ExtResource( 10 )
+light_italic = ExtResource( 8 )
+semi_bold = ExtResource( 4 )
+semi_bold_italic = ExtResource( 7 )
+extra_bold = ExtResource( 12 )
+extra_bold_italic = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+extra_spacing_bottom = -8
+font_data = ExtResource( 4 )
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 13 )
+regular = ExtResource( 5 )
+italic = ExtResource( 6 )
+bold = ExtResource( 3 )
+bold_italic = ExtResource( 9 )
+light = ExtResource( 10 )
+light_italic = ExtResource( 8 )
+semi_bold = ExtResource( 4 )
+semi_bold_italic = ExtResource( 7 )
+extra_bold = ExtResource( 12 )
+extra_bold_italic = ExtResource( 11 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 1 )
+shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
+
+[node name="LiveCards" type="Node2D"]
+script = ExtResource( 14 )
+
+[node name="00" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" type="Panel" parent="00"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.58667
+margin_bottom = 1.58667
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Number" type="Label" parent="00/Panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = -79.9999
+margin_right = -250.0
+margin_bottom = -30.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
+text = "1"
+align = 2
+valign = 1
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+font_size = 40
+font_collection = SubResource( 3 )
+
+[node name="Course" type="Label" parent="00/Panel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = -84.9999
+margin_right = 1051.0
+margin_bottom = -30.0
+rect_pivot_offset = Vector2( 0, 55 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
+text = "CC5408 - Taller de Diseño y Desarrollo de Videojuegos"
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+font_size = 40
+font_collection = SubResource( 5 )
+
+[node name="Gamepads" type="TextureRect" parent="00/Panel"]
+material = SubResource( 6 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -498.0
+margin_top = -370.0
+margin_right = -29.9996
+margin_bottom = -30.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 468, 340 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
