@@ -35,7 +35,7 @@ bg_color = Color( 0.137255, 0.12549, 0.12549, 1 )
 size = 40
 font_data = ExtResource( 3 )
 
-[sub_resource type="Resource" id=14]
+[sub_resource type="Resource" id=3]
 script = ExtResource( 6 )
 regular = ExtResource( 4 )
 italic = ExtResource( 2 )
@@ -53,7 +53,7 @@ size = 40
 extra_spacing_bottom = -8
 font_data = ExtResource( 1 )
 
-[sub_resource type="Resource" id=15]
+[sub_resource type="Resource" id=5]
 script = ExtResource( 6 )
 regular = ExtResource( 4 )
 italic = ExtResource( 2 )
@@ -132,7 +132,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 font_size = 40
-font_collection = SubResource( 14 )
+font_collection = SubResource( 3 )
 
 [node name="Course" type="Label" parent="00/Panel"]
 anchor_top = 1.0
@@ -151,7 +151,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 font_size = 40
-font_collection = SubResource( 15 )
+font_collection = SubResource( 5 )
 
 [node name="Gamepads" type="TextureRect" parent="00/Panel"]
 material = SubResource( 6 )
@@ -175,6 +175,7 @@ __meta__ = {
 layer = -1
 
 [node name="Panel" parent="01" instance=ExtResource( 16 )]
+visible = false
 
 [node name="Title" parent="01/Panel" index="0"]
 text = "Inputs, físicas,
@@ -198,6 +199,7 @@ __meta__ = {
 }
 
 [node name="Input" type="Node2D" parent="01"]
+visible = false
 position = Vector2( 0, 1.58667 )
 script = ExtResource( 21 )
 
@@ -823,6 +825,55 @@ texture = ExtResource( 23 )
 [node name="Godot" parent="09/Node2D" instance=ExtResource( 22 )]
 position = Vector2( 500, 500 )
 
+[node name="10" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="10" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="10/Panel" index="0"]
+text = "Acciones"
+
+[node name="Text" parent="10/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Acciones básicas
+     [b]-[/b]    Caminar
+     [b]-[/b]    Saltar
+     [b]-[/b]    Mover una pieza
+ [b]>[/b]    Acciones estratégicas
+     [b]-[/b]    Ser señuelo
+     [b]-[/b]    Esperar
+     [b]-[/b]    Sacrificar una pieza"
+text = " >    Acciones básicas
+     -    Caminar
+     -    Saltar
+     -    Mover una pieza
+ >    Acciones estratégicas
+     -    Ser señuelo
+     -    Esperar
+     -    Sacrificar una pieza"
+
+[node name="11" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="11" instance=ExtResource( 18 )]
+
+[node name="Title" parent="11/Panel" index="0"]
+text = "Acciones"
+
+[node name="Text" parent="11/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Acciones emergentes
+     [b]-[/b]    Más acciones básicas
+     [b]-[/b]    Interacción con objetos
+     [b]-[/b]    Más de una forma
+     [b]-[/b]    Más objetos
+     [b]-[/b]    Efectos y limitaciones"
+text = " >    Acciones emergentes
+     -    Más acciones básicas
+     -    Interacción con objetos
+     -    Más de una forma
+     -    Más objetos
+     -    Efectos y limitaciones"
+
 [editable path="01/Panel"]
 
 [editable path="02/Panel"]
@@ -840,3 +891,7 @@ position = Vector2( 500, 500 )
 [editable path="08/Panel"]
 
 [editable path="09/Panel"]
+
+[editable path="10/Panel"]
+
+[editable path="11/Panel"]
