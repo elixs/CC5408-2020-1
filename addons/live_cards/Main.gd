@@ -9,7 +9,7 @@ var side_instance
 
 func _enter_tree():
 	
-	add_custom_type("EmphasisLabel", "Label", preload("EmphasisLabel.gd"), preload("Label.svg"))
+	add_custom_type("EmphasisLabel", "Label", preload("EmphasisLabel.gd"), load("res://addons/live_cards/Label.svg"))
 	
 #   screen_instance = Screen.instance()
 	side_instance = Side.instance()
@@ -22,7 +22,7 @@ func _enter_tree():
 	add_control_to_dock(DOCK_SLOT_LEFT_UL, side_instance)
 
    # Hide the main panel
-	make_visible(false)
+#	make_visible(false)
 
 func _exit_tree():
 	remove_custom_type("EmphasisLabel")
