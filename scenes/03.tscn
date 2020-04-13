@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://fonts/OpenSans/OpenSans-SemiBold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://fonts/OpenSans/OpenSans-Italic.ttf" type="DynamicFontData" id=2]
@@ -27,15 +27,21 @@
 [ext_resource path="res://textures/03/circle_o.png" type="Texture" id=25]
 [ext_resource path="res://textures/03/circle.png" type="Texture" id=26]
 [ext_resource path="res://scripts/03/States.gd" type="Script" id=27]
+[ext_resource path="res://icons/dice.svg" type="Texture" id=28]
+[ext_resource path="res://scenes/03/Movement.tscn" type="PackedScene" id=29]
+[ext_resource path="res://fonts/Source_Code_Pro/SourceCodePro-Regular.ttf" type="DynamicFontData" id=30]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="ConcavePolygonShape2D" id=1]
+segments = PoolVector2Array( 0, 0, 1920, 0, 1920, 0, 1920, 1080, 1920, 1080, 0, 1080, 0, 1080, 0, 0 )
+
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.137255, 0.12549, 0.12549, 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 40
 font_data = ExtResource( 3 )
 
-[sub_resource type="Resource" id=3]
+[sub_resource type="Resource" id=18]
 script = ExtResource( 6 )
 regular = ExtResource( 4 )
 italic = ExtResource( 2 )
@@ -48,12 +54,12 @@ semi_bold_italic = ExtResource( 9 )
 extra_bold = ExtResource( 3 )
 extra_bold_italic = ExtResource( 14 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 size = 40
 extra_spacing_bottom = -8
 font_data = ExtResource( 1 )
 
-[sub_resource type="Resource" id=5]
+[sub_resource type="Resource" id=19]
 script = ExtResource( 6 )
 regular = ExtResource( 4 )
 italic = ExtResource( 2 )
@@ -66,23 +72,24 @@ semi_bold_italic = ExtResource( 9 )
 extra_bold = ExtResource( 3 )
 extra_bold_italic = ExtResource( 14 )
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 8 )
 shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 50
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=9]
 size = 75
 font_data = ExtResource( 2 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 48, 48 )
 
-[sub_resource type="ConcavePolygonShape2D" id=10]
-segments = PoolVector2Array( 0, 0, 1920, 0, 1920, 0, 1920, 1080, 1920, 1080, 0, 1080, 0, 1080, 0, 0 )
+[sub_resource type="DynamicFont" id=17]
+size = 50
+font_data = ExtResource( 30 )
 
 [sub_resource type="DynamicFont" id=11]
 size = 50
@@ -96,8 +103,18 @@ font_data = ExtResource( 4 )
 size = 50
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFont" id=14]
+size = 60
+font_data = ExtResource( 4 )
+
 [node name="LiveCards" type="Node2D"]
 script = ExtResource( 5 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, 1.58667 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
 
 [node name="00" type="CanvasLayer" parent="."]
 layer = -1
@@ -105,9 +122,7 @@ layer = -1
 [node name="Panel" type="Panel" parent="00"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 1.58667
-margin_bottom = 1.58667
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -122,7 +137,7 @@ margin_left = -300.0
 margin_top = -79.9999
 margin_right = -250.0
 margin_bottom = -30.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
 text = "1"
 align = 2
@@ -131,8 +146,9 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+emphasis = 0
 font_size = 40
-font_collection = SubResource( 3 )
+font_collection = SubResource( 18 )
 
 [node name="Course" type="Label" parent="00/Panel"]
 anchor_top = 1.0
@@ -142,7 +158,7 @@ margin_top = -84.9999
 margin_right = 1051.0
 margin_bottom = -30.0
 rect_pivot_offset = Vector2( 0, 55 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
 text = "CC5408 - Taller de Diseño y Desarrollo de Videojuegos"
 script = ExtResource( 7 )
@@ -150,11 +166,12 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+emphasis = 0
 font_size = 40
-font_collection = SubResource( 5 )
+font_collection = SubResource( 19 )
 
 [node name="Gamepads" type="TextureRect" parent="00/Panel"]
-material = SubResource( 6 )
+material = SubResource( 7 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -192,7 +209,7 @@ margin_left = -879.0
 margin_top = 30.0
 margin_right = -30.0
 margin_bottom = 99.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "Elías Zelada - ezelada@dcc.uchile.cl"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -213,7 +230,7 @@ margin_left = 1430.0
 margin_top = 855.0
 margin_right = 1622.0
 margin_bottom = 958.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "· - ·)"
 align = 1
 __meta__ = {
@@ -228,11 +245,6 @@ scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 19 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="01/Input/Godot"]
-shape = SubResource( 9 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="01/Input"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="01/Input/StaticBody2D"]
 shape = SubResource( 10 )
 
 [node name="02" type="CanvasLayer" parent="."]
@@ -242,15 +254,19 @@ layer = -1
 visible = false
 
 [node name="Title" parent="02/Panel" index="0"]
-text = "Mecánicas"
+text = "Inputs"
 
 [node name="Text" parent="02/Panel" index="1"]
-bbcode_text = " [b]>[/b]    Elemento principal
- [b]>[/b]    Interacciones y relaciones
- [b]>[/b]    Innovación"
-text = " >    Elemento principal
- >    Interacciones y relaciones
- >    Innovación"
+bbcode_text = " [b]>[/b]    Interacción
+ [b]>[/b]    Jugabilidad
+ [b]>[/b]    Plataforma objetivo
+ [b]>[/b]    Seres humanos
+ [b]>[/b]    Ergonomía"
+text = " >    Interacción
+ >    Jugabilidad
+ >    Plataforma objetivo
+ >    Seres humanos
+ >    Ergonomía"
 
 [node name="03" type="CanvasLayer" parent="."]
 layer = -1
@@ -259,9 +275,251 @@ layer = -1
 visible = false
 
 [node name="Title" parent="03/Panel" index="0"]
-text = "Mecánicas"
+text = "Inputs"
 
 [node name="Text" parent="03/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Edad
+ [b]>[/b]    Coherencia
+ [b]>[/b]    Estándar
+ [b]>[/b]    Button mashing
+ [b]>[/b]    Rapidez"
+text = " >    Edad
+ >    Coherencia
+ >    Estándar
+ >    Button mashing
+ >    Rapidez"
+
+[node name="04" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="04" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="04/Panel" index="0"]
+text = "Inputs - Godot"
+
+[node name="05" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="05" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="05/Panel" index="0"]
+text = "Físicas"
+
+[node name="Text" parent="05/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Realismo
+ [b]>[/b]    Percepción > Precisión
+ [b]>[/b]    Motores
+ [b]>[/b]    Canon"
+text = " >    Realismo
+ >    Percepción > Precisión
+ >    Motores
+ >    Canon"
+
+[node name="06" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="06" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="06/Panel" index="0"]
+text = "Físicas"
+
+[node name="Text" parent="06/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Posición
+[code]
+   x += input_x
+[/code]"
+text = " >    Posición
+
+   x += input_x
+"
+
+[node name="07" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="07" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="07/Panel" index="0"]
+text = "Físicas"
+
+[node name="Text" parent="07/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Velocidad
+[code]
+   vel_x = input_x
+	
+   x += vel_x * delta
+[/code]"
+text = " >    Velocidad
+
+   vel_x = input_x
+	
+   x += vel_x * delta
+"
+
+[node name="08" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="08" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="08/Panel" index="0"]
+text = "Físicas"
+
+[node name="Text" parent="08/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Roce
+[code]
+   vel_x = lerp(vel_x, input_x, 1 - friction)
+	
+   x += vel_x * delta
+[/code]"
+text = " >    Roce
+
+   vel_x = lerp(vel_x, input_x, 1 - friction)
+	
+   x += vel_x * delta
+"
+
+[node name="09" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="09" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="09/Panel" index="0"]
+text = "Físicas"
+
+[node name="Text" parent="09/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Salto
+[code]
+   vel_x = lerp(vel_x, input_x, 1 - friction)
+   if jump_pressed:
+      vel_y = jump
+	
+   pos += vel * delta
+[/code]"
+text = " >    Salto
+
+   vel_x = lerp(vel_x, input_x, 1 - friction)
+   if jump_pressed:
+      vel_y = jump
+	
+   pos += vel * delta
+"
+
+[node name="10" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="10" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="10/Panel" index="0"]
+text = "Físicas"
+
+[node name="Text" parent="10/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Gravedad
+[code]
+   vel_x = lerp(vel_x, input_x, 1 - friction)
+   if jump_pressed:
+      vel_y = jump
+   vel_y += gravity
+	
+   pos += vel * delta
+[/code]"
+text = " >    Gravedad
+
+   vel_x = lerp(vel_x, input_x, 1 - friction)
+   if jump_pressed:
+      vel_y = jump
+   vel_y += gravity
+	
+   pos += vel * delta
+"
+
+[node name="Movement" parent="." instance=ExtResource( 29 )]
+visible = false
+position = Vector2( 1500, 650 )
+
+[node name="11" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="11" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="11/Panel" index="0"]
+text = "Físicas - Godot"
+
+[node name="Text" parent="11/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Static body
+ [b]>[/b]    Kinematic body
+     [b]-[/b]    [code]move_and_slide[/code]
+ [b]>[/b]    Rigid body
+     [b]-[/b]    [code]add_force[/code]"
+text = " >    Static body
+ >    Kinematic body
+     -    move_and_slide
+ >    Rigid body
+     -    add_force"
+
+[node name="12" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="12" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="12/Panel" index="0"]
+text = "Físicas - Godot"
+
+[node name="Text" parent="12/Panel" index="1"]
+custom_fonts/mono_font = SubResource( 17 )
+bbcode_text = "[code] var input_x =
+    Input.get_action_strength(\"right\") -
+    Input.get_action_strength(\"left\")
+ velocity.x = lerp(velocity.x, input_x*speed, 1-friction)
+ if Input.is_action_just_pressed(\"jump\"):
+    velocity.y = -jump_speed
+ velocity.y += gravity
+	
+ velocity = move_and_slide(velocity) [/code]"
+text = " var input_x =
+    Input.get_action_strength(\"right\") -
+    Input.get_action_strength(\"left\")
+ velocity.x = lerp(velocity.x, input_x*speed, 1-friction)
+ if Input.is_action_just_pressed(\"jump\"):
+    velocity.y = -jump_speed
+ velocity.y += gravity
+	
+ velocity = move_and_slide(velocity) "
+
+[node name="13" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="13" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="13/Panel" index="0"]
+text = "Mecánicas"
+
+[node name="Text" parent="13/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Elemento principal
+ [b]>[/b]    Interacciones y relaciones
+ [b]>[/b]    Innovación"
+text = " >    Elemento principal
+ >    Interacciones y relaciones
+ >    Innovación"
+
+[node name="14" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="14" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="14/Panel" index="0"]
+text = "Mecánicas"
+
+[node name="Text" parent="14/Panel" index="1"]
 bbcode_text = " [b]1)[/b]   Espacio
  [b]2)[/b]   Tiempo
  [b]3)[/b]   Objetos, atributos y estados
@@ -277,16 +535,16 @@ text = " 1)   Espacio
  6)   Habilidad
  7)   Oportunidad"
 
-[node name="04" type="CanvasLayer" parent="."]
+[node name="15" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Panel" parent="04" instance=ExtResource( 18 )]
+[node name="Panel" parent="15" instance=ExtResource( 18 )]
 visible = false
 
-[node name="Title" parent="04/Panel" index="0"]
+[node name="Title" parent="15/Panel" index="0"]
 text = "Espacio"
 
-[node name="Text" parent="04/Panel" index="1"]
+[node name="Text" parent="15/Panel" index="1"]
 bbcode_text = " [b]>[/b]    Discreto o continuo
  [b]>[/b]    Número de dimensiones
  [b]>[/b]    Zonas delimitas (conectadas) "
@@ -294,285 +552,285 @@ text = " >    Discreto o continuo
  >    Número de dimensiones
  >    Zonas delimitas (conectadas) "
 
-[node name="05" type="CanvasLayer" parent="."]
+[node name="16" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Panel" parent="05" instance=ExtResource( 17 )]
+[node name="Panel" parent="16" instance=ExtResource( 17 )]
 visible = false
 
-[node name="Title" parent="05/Panel" index="0"]
+[node name="Title" parent="16/Panel" index="0"]
 text = "Espacio"
 
-[node name="Picture" parent="05/Panel" index="1"]
+[node name="Picture" parent="16/Panel" index="1"]
 visible = false
 
-[node name="Node2D" type="Node2D" parent="05/Panel"]
+[node name="Node2D" type="Node2D" parent="16/Panel"]
 position = Vector2( 960, 540 )
 
-[node name="icon" type="Sprite" parent="05/Panel/Node2D"]
+[node name="icon" type="Sprite" parent="16/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( -75, 0 )
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="icon2" type="Sprite" parent="05/Panel/Node2D"]
+[node name="icon2" type="Sprite" parent="16/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 74.9999, 0 )
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="icon3" type="Sprite" parent="05/Panel/Node2D"]
+[node name="icon3" type="Sprite" parent="16/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 0, -75 )
 rotation = 1.5708
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="icon4" type="Sprite" parent="05/Panel/Node2D"]
+[node name="icon4" type="Sprite" parent="16/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 0, 75 )
 rotation = 1.5708
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="06" type="CanvasLayer" parent="."]
+[node name="17" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Panel" parent="06" instance=ExtResource( 17 )]
+[node name="Panel" parent="17" instance=ExtResource( 17 )]
 visible = false
 
-[node name="Title" parent="06/Panel" index="0"]
+[node name="Title" parent="17/Panel" index="0"]
 text = "Espacio"
 
-[node name="Picture" parent="06/Panel" index="1"]
+[node name="Picture" parent="17/Panel" index="1"]
 visible = false
 
-[node name="Node2D" type="Node2D" parent="06/Panel"]
+[node name="Node2D" type="Node2D" parent="17/Panel"]
 position = Vector2( 960, 540 )
 
-[node name="icon" type="Sprite" parent="06/Panel/Node2D"]
+[node name="icon" type="Sprite" parent="17/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( -75, 0 )
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="icon2" type="Sprite" parent="06/Panel/Node2D"]
+[node name="icon2" type="Sprite" parent="17/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 74.9999, 0 )
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="icon3" type="Sprite" parent="06/Panel/Node2D"]
+[node name="icon3" type="Sprite" parent="17/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 0, -75 )
 rotation = 1.5708
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="icon4" type="Sprite" parent="06/Panel/Node2D"]
+[node name="icon4" type="Sprite" parent="17/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 0, 75 )
 rotation = 1.5708
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="Node2D3" type="Node2D" parent="06/Panel"]
+[node name="Node2D3" type="Node2D" parent="17/Panel"]
 position = Vector2( 1560, 540 )
 
-[node name="icon" type="Sprite" parent="06/Panel/Node2D3"]
+[node name="icon" type="Sprite" parent="17/Panel/Node2D3"]
 material = ExtResource( 20 )
 position = Vector2( -75, 0 )
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="icon2" type="Sprite" parent="06/Panel/Node2D3"]
+[node name="icon2" type="Sprite" parent="17/Panel/Node2D3"]
 material = ExtResource( 20 )
 position = Vector2( 74.9999, 0 )
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="icon3" type="Sprite" parent="06/Panel/Node2D3"]
+[node name="icon3" type="Sprite" parent="17/Panel/Node2D3"]
 material = ExtResource( 20 )
 position = Vector2( 0, -75 )
 rotation = 1.5708
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="icon4" type="Sprite" parent="06/Panel/Node2D3"]
+[node name="icon4" type="Sprite" parent="17/Panel/Node2D3"]
 material = ExtResource( 20 )
 position = Vector2( 0, 75 )
 rotation = 1.5708
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="Node2D2" type="Node2D" parent="06/Panel"]
+[node name="Node2D2" type="Node2D" parent="17/Panel"]
 position = Vector2( 360, 540 )
 
-[node name="icon" type="Sprite" parent="06/Panel/Node2D2"]
+[node name="icon" type="Sprite" parent="17/Panel/Node2D2"]
 material = ExtResource( 20 )
 position = Vector2( -75, 0 )
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="icon2" type="Sprite" parent="06/Panel/Node2D2"]
+[node name="icon2" type="Sprite" parent="17/Panel/Node2D2"]
 material = ExtResource( 20 )
 position = Vector2( 74.9999, 0 )
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="icon3" type="Sprite" parent="06/Panel/Node2D2"]
+[node name="icon3" type="Sprite" parent="17/Panel/Node2D2"]
 material = ExtResource( 20 )
 position = Vector2( 0, -75 )
 rotation = 1.5708
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="icon4" type="Sprite" parent="06/Panel/Node2D2"]
+[node name="icon4" type="Sprite" parent="17/Panel/Node2D2"]
 material = ExtResource( 20 )
 position = Vector2( 0, 75 )
 rotation = 1.5708
 scale = Vector2( 0.2, 8 )
 texture = ExtResource( 19 )
 
-[node name="icon" type="Sprite" parent="06/Panel"]
+[node name="icon" type="Sprite" parent="17/Panel"]
 position = Vector2( 329.387, 511.375 )
 texture = ExtResource( 19 )
 
-[node name="icon2" type="Sprite" parent="06/Panel"]
+[node name="icon2" type="Sprite" parent="17/Panel"]
 position = Vector2( 960, 540 )
 texture = ExtResource( 19 )
 
-[node name="icon3" type="Sprite" parent="06/Panel"]
+[node name="icon3" type="Sprite" parent="17/Panel"]
 position = Vector2( 1595.78, 523.409 )
 texture = ExtResource( 19 )
 
-[node name="07" type="CanvasLayer" parent="."]
+[node name="18" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Panel" parent="07" instance=ExtResource( 17 )]
+[node name="Panel" parent="18" instance=ExtResource( 17 )]
 visible = false
 
-[node name="Title" parent="07/Panel" index="0"]
+[node name="Title" parent="18/Panel" index="0"]
 text = "Espacio"
 
-[node name="Picture" parent="07/Panel" index="1"]
+[node name="Picture" parent="18/Panel" index="1"]
 visible = false
 
-[node name="Node2D" type="Node2D" parent="07/Panel"]
+[node name="Node2D" type="Node2D" parent="18/Panel"]
 position = Vector2( 960, 540 )
 
-[node name="icon" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( -160, 0 )
 scale = Vector2( 0.2, 5 )
 texture = ExtResource( 19 )
 
-[node name="icon16" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon16" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 rotation = 0.785398
 scale = Vector2( 0.2, 7 )
 texture = ExtResource( 19 )
 
-[node name="icon17" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon17" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 rotation = -0.785398
 scale = Vector2( 0.2, 7 )
 texture = ExtResource( 19 )
 
-[node name="icon2" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon2" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 scale = Vector2( 0.2, 5 )
 texture = ExtResource( 19 )
 
-[node name="icon15" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon15" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 160, 0 )
 scale = Vector2( 0.2, 5 )
 texture = ExtResource( 19 )
 
-[node name="icon3" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon3" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 0, -160 )
 rotation = 1.5708
 scale = Vector2( 0.2, 5 )
 texture = ExtResource( 19 )
 
-[node name="icon4" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon4" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 rotation = 1.5708
 scale = Vector2( 0.2, 5 )
 texture = ExtResource( 19 )
 
-[node name="icon14" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon14" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 0, 160 )
 rotation = 1.5708
 scale = Vector2( 0.2, 5 )
 texture = ExtResource( 19 )
 
-[node name="icon5" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon5" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( -160, 0 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 26 )
 
-[node name="icon6" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon6" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 26 )
 
-[node name="icon7" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon7" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 160, 0 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 26 )
 
-[node name="icon8" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon8" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( -160, 160 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 26 )
 
-[node name="icon9" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon9" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 0, 160 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 26 )
 
-[node name="icon10" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon10" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 160, 160 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 26 )
 
-[node name="icon11" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon11" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( -160, -160 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 26 )
 
-[node name="icon12" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon12" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 0, -160 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 26 )
 
-[node name="icon13" type="Sprite" parent="07/Panel/Node2D"]
+[node name="icon13" type="Sprite" parent="18/Panel/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 160, -160 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 26 )
 
-[node name="08" type="CanvasLayer" parent="."]
+[node name="19" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Panel" parent="08" instance=ExtResource( 18 )]
+[node name="Panel" parent="19" instance=ExtResource( 18 )]
 visible = false
 
-[node name="Title" parent="08/Panel" index="0"]
+[node name="Title" parent="19/Panel" index="0"]
 text = "Tiempo"
 
-[node name="Text" parent="08/Panel" index="1"]
+[node name="Text" parent="19/Panel" index="1"]
 bbcode_text = " [b]>[/b]    Discreto o continuo
  [b]>[/b]    Turnos
  [b]>[/b]    Límites
@@ -584,26 +842,26 @@ text = " >    Discreto o continuo
  >    Carreras
  >    Control"
 
-[node name="09" type="CanvasLayer" parent="."]
+[node name="20" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Panel" parent="09" instance=ExtResource( 18 )]
+[node name="Panel" parent="20" instance=ExtResource( 18 )]
 visible = false
 
-[node name="Title" parent="09/Panel" index="0"]
+[node name="Title" parent="20/Panel" index="0"]
 text = "Objetos, atributos y estados"
 
-[node name="Text" parent="09/Panel" index="1"]
+[node name="Text" parent="20/Panel" index="1"]
 visible = false
 
-[node name="Node2D" type="Node2D" parent="09"]
+[node name="Node2D" type="Node2D" parent="20"]
 visible = false
 
-[node name="States" type="Node2D" parent="09/Node2D"]
+[node name="States" type="Node2D" parent="20/Node2D"]
 position = Vector2( 200, 0 )
 script = ExtResource( 27 )
 
-[node name="Shield" type="Sprite" parent="09/Node2D/States"]
+[node name="Shield" type="Sprite" parent="20/Node2D/States"]
 position = Vector2( 710, 355 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 25 )
@@ -611,7 +869,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label" type="Label" parent="09/Node2D/States/Shield"]
+[node name="Label" type="Label" parent="20/Node2D/States/Shield"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -150.0
@@ -626,11 +884,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="circle_o" type="Sprite" parent="09/Node2D/States/Shield"]
+[node name="circle_o" type="Sprite" parent="20/Node2D/States/Shield"]
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 25 )
 
-[node name="NoShield" type="Sprite" parent="09/Node2D/States"]
+[node name="NoShield" type="Sprite" parent="20/Node2D/States"]
 position = Vector2( 1210, 355 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 25 )
@@ -638,7 +896,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label2" type="Label" parent="09/Node2D/States/NoShield"]
+[node name="Label2" type="Label" parent="20/Node2D/States/NoShield"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -150.0
@@ -653,7 +911,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Death" type="Sprite" parent="09/Node2D/States"]
+[node name="Death" type="Sprite" parent="20/Node2D/States"]
 position = Vector2( 710, 855 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 25 )
@@ -661,7 +919,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label3" type="Label" parent="09/Node2D/States/Death"]
+[node name="Label3" type="Label" parent="20/Node2D/States/Death"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -150.0
@@ -676,7 +934,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bleeding" type="Sprite" parent="09/Node2D/States"]
+[node name="Bleeding" type="Sprite" parent="20/Node2D/States"]
 position = Vector2( 1210, 855 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 25 )
@@ -684,7 +942,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Label3" type="Label" parent="09/Node2D/States/Bleeding"]
+[node name="Label3" type="Label" parent="20/Node2D/States/Bleeding"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -150.0
@@ -699,12 +957,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="arrow" type="Sprite" parent="09/Node2D/States"]
+[node name="arrow" type="Sprite" parent="20/Node2D/States"]
 position = Vector2( 960, 305 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 24 )
 
-[node name="Label2" type="Label" parent="09/Node2D/States/arrow"]
+[node name="Label2" type="Label" parent="20/Node2D/States/arrow"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -721,13 +979,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="arrow2" type="Sprite" parent="09/Node2D/States"]
+[node name="arrow2" type="Sprite" parent="20/Node2D/States"]
 position = Vector2( 960, 405 )
 rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 24 )
 
-[node name="Label3" type="Label" parent="09/Node2D/States/arrow2"]
+[node name="Label3" type="Label" parent="20/Node2D/States/arrow2"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -745,13 +1003,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="arrow3" type="Sprite" parent="09/Node2D/States"]
+[node name="arrow3" type="Sprite" parent="20/Node2D/States"]
 position = Vector2( 960, 855 )
 rotation = 3.14159
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 24 )
 
-[node name="Label4" type="Label" parent="09/Node2D/States/arrow3"]
+[node name="Label4" type="Label" parent="20/Node2D/States/arrow3"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -769,13 +1027,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="arrow5" type="Sprite" parent="09/Node2D/States"]
+[node name="arrow5" type="Sprite" parent="20/Node2D/States"]
 position = Vector2( 960, 605 )
 rotation = 3.92699
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 24 )
 
-[node name="Label5" type="Label" parent="09/Node2D/States/arrow5"]
+[node name="Label5" type="Label" parent="20/Node2D/States/arrow5"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -793,13 +1051,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="arrow4" type="Sprite" parent="09/Node2D/States"]
+[node name="arrow4" type="Sprite" parent="20/Node2D/States"]
 position = Vector2( 1210, 605 )
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 24 )
 
-[node name="Label3" type="Label" parent="09/Node2D/States/arrow4"]
+[node name="Label3" type="Label" parent="20/Node2D/States/arrow4"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -816,24 +1074,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cannon" type="Sprite" parent="09/Node2D"]
+[node name="cannon" type="Sprite" parent="20/Node2D"]
 material = ExtResource( 20 )
 position = Vector2( 215, 800 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 23 )
 
-[node name="Godot" parent="09/Node2D" instance=ExtResource( 22 )]
+[node name="Godot" parent="20/Node2D" instance=ExtResource( 22 )]
 position = Vector2( 500, 500 )
 
-[node name="10" type="CanvasLayer" parent="."]
+[node name="21" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Panel" parent="10" instance=ExtResource( 18 )]
+[node name="Panel" parent="21" instance=ExtResource( 18 )]
+visible = false
 
-[node name="Title" parent="10/Panel" index="0"]
+[node name="Title" parent="21/Panel" index="0"]
 text = "Acciones"
 
-[node name="Text" parent="10/Panel" index="1"]
+[node name="Text" parent="21/Panel" index="1"]
 bbcode_text = " [b]>[/b]    Acciones básicas
      [b]-[/b]    Caminar
      [b]-[/b]    Saltar
@@ -851,16 +1110,16 @@ text = " >    Acciones básicas
      -    Esperar
      -    Sacrificar una pieza"
 
-[node name="11" type="CanvasLayer" parent="."]
+[node name="22" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Panel" parent="11" instance=ExtResource( 18 )]
+[node name="Panel" parent="22" instance=ExtResource( 18 )]
 visible = false
 
-[node name="Title" parent="11/Panel" index="0"]
+[node name="Title" parent="22/Panel" index="0"]
 text = "Acciones"
 
-[node name="Text" parent="11/Panel" index="1"]
+[node name="Text" parent="22/Panel" index="1"]
 bbcode_text = " [b]>[/b]    Acciones emergentes
      [b]-[/b]    Más acciones básicas
      [b]-[/b]    Interacción con objetos
@@ -873,6 +1132,430 @@ text = " >    Acciones emergentes
      -    Más de una forma
      -    Más objetos
      -    Efectos y limitaciones"
+
+[node name="23" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="23" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="23/Panel" index="0"]
+text = "Reglas"
+
+[node name="Text" parent="23/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Mecánica fundamental
+ [b]>[/b]    Base
+ [b]>[/b]    Objetivos
+     [b]-[/b]    Concretos
+     [b]-[/b]    Realizable
+     [b]-[/b]    Gratificantes
+ [b]>[/b]    Modos"
+text = " >    Mecánica fundamental
+ >    Base
+ >    Objetivos
+     -    Concretos
+     -    Realizable
+     -    Gratificantes
+ >    Modos"
+
+[node name="24" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="24" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="24/Panel" index="0"]
+text = "Habilidad"
+
+[node name="Text" parent="24/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Jugador y dificultad
+ [b]>[/b]    Tipos
+     [b]-[/b]    Físicos
+     [b]-[/b]    Mentales
+     [b]-[/b]    Sociales"
+text = " >    Jugador y dificultad
+ >    Tipos
+     -    Físicos
+     -    Mentales
+     -    Sociales"
+
+[node name="25" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="25" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="25/Panel" index="0"]
+text = "Oportunidad"
+
+[node name="Text" parent="25/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Probabilidades
+ [b]>[/b]    Entretención
+ [b]>[/b]    Cálculo"
+text = " >    Probabilidades
+ >    Entretención
+ >    Cálculo"
+
+[node name="26" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="26" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="26/Panel" index="0"]
+text = "Oportunidad"
+
+[node name="Picture" parent="26/Panel" index="1"]
+visible = false
+
+[node name="dice" type="Sprite" parent="26/Panel"]
+material = ExtResource( 20 )
+position = Vector2( 810, 500 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="dice4" type="Sprite" parent="26/Panel"]
+material = ExtResource( 20 )
+position = Vector2( 510, 500 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="dice2" type="Sprite" parent="26/Panel"]
+material = ExtResource( 20 )
+position = Vector2( 1110, 500 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="dice3" type="Sprite" parent="26/Panel"]
+material = ExtResource( 20 )
+position = Vector2( 1410, 500 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Label" type="Label" parent="26/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -251.5
+margin_top = 158.5
+margin_right = 251.5
+margin_bottom = 241.5
+custom_fonts/font = SubResource( 14 )
+text = "Al menos un 6 "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="27" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="27" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="27/Panel" index="0"]
+text = "Oportunidad"
+
+[node name="Picture" parent="27/Panel" index="1"]
+visible = false
+
+[node name="Label" type="Label" parent="27/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 240.0
+margin_top = -160.0
+margin_right = 743.0
+margin_bottom = -77.0
+custom_fonts/font = SubResource( 14 )
+text = "1/6"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="27/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 240.0
+margin_top = 140.0
+margin_right = 743.0
+margin_bottom = 223.0
+custom_fonts/font = SubResource( 14 )
+text = "4/6 ?"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dice5" type="Sprite" parent="27/Panel"]
+material = ExtResource( 20 )
+position = Vector2( 335, 300 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+centered = false
+
+[node name="Node2D" type="Node2D" parent="27/Panel"]
+position = Vector2( 335, 600 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="dice4" type="Sprite" parent="27/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 128, 126.413 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="dice" type="Sprite" parent="27/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 328, 126.413 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="dice2" type="Sprite" parent="27/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 528, 126.413 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="dice3" type="Sprite" parent="27/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 728, 126.413 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="28" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="28" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="28/Panel" index="0"]
+text = "Oportunidad"
+
+[node name="Picture" parent="28/Panel" index="1"]
+visible = false
+
+[node name="Label" type="Label" parent="28/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 240.0
+margin_top = -160.0
+margin_right = 743.0
+margin_bottom = -77.0
+custom_fonts/font = SubResource( 14 )
+text = "5/6"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="28/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -940.0
+margin_top = -160.0
+margin_right = -437.0
+margin_bottom = -77.0
+custom_fonts/font = SubResource( 14 )
+text = "NO"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="28/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -940.0
+margin_top = 140.0
+margin_right = -437.0
+margin_bottom = 223.0
+custom_fonts/font = SubResource( 14 )
+text = "NO"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="28/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 240.0
+margin_top = 140.0
+margin_right = 743.0
+margin_bottom = 223.0
+custom_fonts/font = SubResource( 14 )
+text = "(5/6)^4 = 48.2%"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dice5" type="Sprite" parent="28/Panel"]
+material = ExtResource( 20 )
+position = Vector2( 335, 300 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+centered = false
+
+[node name="Node2D" type="Node2D" parent="28/Panel"]
+position = Vector2( 335, 600 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="dice4" type="Sprite" parent="28/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 128, 126.413 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="dice" type="Sprite" parent="28/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 328, 126.413 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="dice2" type="Sprite" parent="28/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 528, 126.413 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="dice3" type="Sprite" parent="28/Panel/Node2D"]
+material = ExtResource( 20 )
+position = Vector2( 728, 126.413 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="29" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="29" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="29/Panel" index="0"]
+text = "Oportunidad"
+
+[node name="Picture" parent="29/Panel" index="1"]
+visible = false
+
+[node name="dice" type="Sprite" parent="29/Panel"]
+material = ExtResource( 20 )
+position = Vector2( 810, 500 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="dice4" type="Sprite" parent="29/Panel"]
+material = ExtResource( 20 )
+position = Vector2( 510, 500 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="dice2" type="Sprite" parent="29/Panel"]
+material = ExtResource( 20 )
+position = Vector2( 1110, 500 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="dice3" type="Sprite" parent="29/Panel"]
+material = ExtResource( 20 )
+position = Vector2( 1410, 500 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 28 )
+
+[node name="Label" type="Label" parent="29/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -255.5
+margin_top = 158.5
+margin_right = 255.5
+margin_bottom = 241.5
+custom_fonts/font = SubResource( 14 )
+text = "1 - (5/6)^4 = 51.8%"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="30" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Label5" type="Label" parent="30"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 60.0001
+margin_top = -315.0
+margin_right = 440.0
+margin_bottom = 178.0
+custom_fonts/font = SubResource( 14 )
+text = "Ataque:
+50%: 100
+30%: 150
+20%: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="30"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 390.0
+margin_top = -315.0
+margin_right = 755.0
+margin_bottom = 178.0
+custom_fonts/font = SubResource( 14 )
+text = "Esperanza:
+   0.5 * 100
++ 0.3 * 150
++ 0.2 *     0
+        = 95"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" parent="30" instance=ExtResource( 18 )]
+
+[node name="Title" parent="30/Panel" index="0"]
+text = "Oportunidad"
+
+[node name="Text" parent="30/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Esperanza
+ [b]>[/b]    Mundo real
+ [b]>[/b]    Minimizar riesgo
+ [b]>[/b]    Factor humano"
+text = " >    Esperanza
+ >    Mundo real
+ >    Minimizar riesgo
+ >    Factor humano"
 
 [editable path="01/Panel"]
 
@@ -895,3 +1578,41 @@ text = " >    Acciones emergentes
 [editable path="10/Panel"]
 
 [editable path="11/Panel"]
+
+[editable path="12/Panel"]
+
+[editable path="13/Panel"]
+
+[editable path="14/Panel"]
+
+[editable path="15/Panel"]
+
+[editable path="16/Panel"]
+
+[editable path="17/Panel"]
+
+[editable path="18/Panel"]
+
+[editable path="19/Panel"]
+
+[editable path="20/Panel"]
+
+[editable path="21/Panel"]
+
+[editable path="22/Panel"]
+
+[editable path="23/Panel"]
+
+[editable path="24/Panel"]
+
+[editable path="25/Panel"]
+
+[editable path="26/Panel"]
+
+[editable path="27/Panel"]
+
+[editable path="28/Panel"]
+
+[editable path="29/Panel"]
+
+[editable path="30/Panel"]

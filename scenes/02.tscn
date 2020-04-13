@@ -87,8 +87,6 @@ layer = -1
 [node name="Panel" type="Panel" parent="00"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 1.58667
-margin_bottom = 1.58667
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true,
@@ -157,6 +155,7 @@ __meta__ = {
 layer = -1
 
 [node name="Panel" parent="01" instance=ExtResource( 16 )]
+visible = false
 
 [node name="Title" parent="01/Panel" index="0"]
 text = "Videojuegos"
@@ -409,7 +408,6 @@ stretch_mode = 6
 layer = -1
 
 [node name="Panel" parent="16" instance=ExtResource( 18 )]
-visible = false
 
 [node name="Title" parent="16/Panel" index="0"]
 text = "Ejemplos"

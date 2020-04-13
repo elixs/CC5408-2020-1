@@ -11,9 +11,9 @@ func set_font_properties(font):
 #
 func set_font_size(new_font_size):
 	font_size = new_font_size
-	var mono_font = get("custom_fonts/mono_font")	
-	if mono_font:
-		set_font_properties(mono_font)
+#	var mono_font = get("custom_fonts/mono_font")	
+#	if mono_font:
+#		set_font_properties(mono_font)
 	var bold_italics_font = get("custom_fonts/bold_italics_font")	
 	if bold_italics_font:
 		set_font_properties(bold_italics_font)
