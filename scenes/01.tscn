@@ -32,14 +32,14 @@ bg_color = Color( 0.137255, 0.12549, 0.12549, 1 )
 size = 40
 font_data = ExtResource( 10 )
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id=21]
 
 [sub_resource type="DynamicFont" id=4]
 size = 40
 extra_spacing_bottom = -8
 font_data = ExtResource( 2 )
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=22]
 shader = ExtResource( 15 )
 shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
 
@@ -137,8 +137,9 @@ script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+emphasis = 0
 font_size = 40
-font_collection = SubResource( 3 )
+font_collection = SubResource( 21 )
 
 [node name="Course" type="Label" parent="00/Panel"]
 anchor_top = 1.0
@@ -156,8 +157,9 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+emphasis = 0
 font_size = 40
-font_collection = SubResource( 5 )
+font_collection = SubResource( 22 )
 
 [node name="Gamepads" type="TextureRect" parent="00/Panel"]
 material = SubResource( 6 )
@@ -181,6 +183,7 @@ __meta__ = {
 layer = -1
 
 [node name="Panel" parent="01" instance=ExtResource( 16 )]
+visible = false
 
 [node name="Subtitle" parent="01/Panel" index="1"]
 visible = false
@@ -200,6 +203,7 @@ __meta__ = {
 }
 
 [node name="KaoGame" type="Node2D" parent="01"]
+visible = false
 script = ExtResource( 26 )
 
 [node name="Limits" type="Node2D" parent="01/KaoGame"]

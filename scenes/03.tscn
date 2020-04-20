@@ -41,7 +41,7 @@ bg_color = Color( 0.137255, 0.12549, 0.12549, 1 )
 size = 40
 font_data = ExtResource( 3 )
 
-[sub_resource type="Resource" id=18]
+[sub_resource type="Resource" id=16]
 script = ExtResource( 6 )
 regular = ExtResource( 4 )
 italic = ExtResource( 2 )
@@ -59,7 +59,7 @@ size = 40
 extra_spacing_bottom = -8
 font_data = ExtResource( 1 )
 
-[sub_resource type="Resource" id=19]
+[sub_resource type="Resource" id=17]
 script = ExtResource( 6 )
 regular = ExtResource( 4 )
 italic = ExtResource( 2 )
@@ -87,13 +87,9 @@ font_data = ExtResource( 2 )
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 48, 48 )
 
-[sub_resource type="DynamicFont" id=17]
-size = 50
-font_data = ExtResource( 30 )
-
 [sub_resource type="DynamicFont" id=11]
 size = 50
-font_data = ExtResource( 4 )
+font_data = ExtResource( 30 )
 
 [sub_resource type="DynamicFont" id=12]
 size = 50
@@ -104,6 +100,10 @@ size = 50
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=14]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=15]
 size = 60
 font_data = ExtResource( 4 )
 
@@ -148,7 +148,7 @@ __meta__ = {
 }
 emphasis = 0
 font_size = 40
-font_collection = SubResource( 18 )
+font_collection = SubResource( 16 )
 
 [node name="Course" type="Label" parent="00/Panel"]
 anchor_top = 1.0
@@ -168,7 +168,7 @@ __meta__ = {
 }
 emphasis = 0
 font_size = 40
-font_collection = SubResource( 19 )
+font_collection = SubResource( 17 )
 
 [node name="Gamepads" type="TextureRect" parent="00/Panel"]
 material = SubResource( 7 )
@@ -473,7 +473,7 @@ visible = false
 text = "Físicas - Godot"
 
 [node name="Text" parent="12/Panel" index="1"]
-custom_fonts/mono_font = SubResource( 17 )
+custom_fonts/mono_font = SubResource( 11 )
 bbcode_text = "[code] var input_x =
     Input.get_action_strength(\"right\") -
     Input.get_action_strength(\"left\")
@@ -876,7 +876,7 @@ margin_left = -150.0
 margin_top = -150.0
 margin_right = -150.0
 margin_bottom = -150.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "Shield"
 align = 1
 valign = 1
@@ -903,7 +903,7 @@ margin_left = -150.0
 margin_top = -150.0
 margin_right = -150.0
 margin_bottom = -150.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
 text = "No shield"
 align = 1
 valign = 1
@@ -926,7 +926,7 @@ margin_left = -150.0
 margin_top = -150.0
 margin_right = -150.0
 margin_bottom = -150.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
 text = "Death"
 align = 1
 valign = 1
@@ -949,7 +949,7 @@ margin_left = -150.0
 margin_top = -150.0
 margin_right = -150.0
 margin_bottom = -150.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
 text = "Bleeding"
 align = 1
 valign = 1
@@ -971,7 +971,7 @@ margin_left = -571.5
 margin_top = -144.5
 margin_right = 71.5
 margin_bottom = 4.49996
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "shield == 0"
 align = 1
 valign = 1
@@ -995,7 +995,7 @@ margin_top = -30.0
 margin_right = 500.0
 margin_bottom = 50.0
 rect_rotation = 180.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "shield > 0"
 align = 1
 valign = 1
@@ -1019,7 +1019,7 @@ margin_top = 30.0
 margin_right = 500.0
 margin_bottom = 110.0
 rect_rotation = 180.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "timeout"
 align = 1
 valign = 1
@@ -1043,7 +1043,7 @@ margin_top = 30.0
 margin_right = 500.0
 margin_bottom = 110.0
 rect_rotation = 180.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "kill"
 align = 1
 valign = 1
@@ -1066,7 +1066,7 @@ margin_left = -571.5
 margin_top = -144.5
 margin_right = 71.5
 margin_bottom = 4.49999
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 12 )
 text = "life == 0"
 align = 1
 valign = 1
@@ -1241,7 +1241,7 @@ margin_left = -251.5
 margin_top = 158.5
 margin_right = 251.5
 margin_bottom = 241.5
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "Al menos un 6 "
 align = 1
 valign = 1
@@ -1270,7 +1270,7 @@ margin_left = 240.0
 margin_top = -160.0
 margin_right = 743.0
 margin_bottom = -77.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "1/6"
 align = 1
 valign = 1
@@ -1287,7 +1287,7 @@ margin_left = 240.0
 margin_top = 140.0
 margin_right = 743.0
 margin_bottom = 223.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "4/6 ?"
 align = 1
 valign = 1
@@ -1353,7 +1353,7 @@ margin_left = 240.0
 margin_top = -160.0
 margin_right = 743.0
 margin_bottom = -77.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "5/6"
 align = 1
 valign = 1
@@ -1370,7 +1370,7 @@ margin_left = -940.0
 margin_top = -160.0
 margin_right = -437.0
 margin_bottom = -77.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "NO"
 align = 1
 valign = 1
@@ -1387,7 +1387,7 @@ margin_left = -940.0
 margin_top = 140.0
 margin_right = -437.0
 margin_bottom = 223.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "NO"
 align = 1
 valign = 1
@@ -1404,7 +1404,7 @@ margin_left = 240.0
 margin_top = 140.0
 margin_right = 743.0
 margin_bottom = 223.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "(5/6)^4 = 48.2%"
 align = 1
 valign = 1
@@ -1494,7 +1494,7 @@ margin_left = -255.5
 margin_top = 158.5
 margin_right = 255.5
 margin_bottom = 241.5
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "1 - (5/6)^4 = 51.8%"
 align = 1
 valign = 1
@@ -1514,7 +1514,7 @@ margin_left = 60.0001
 margin_top = -315.0
 margin_right = 440.0
 margin_bottom = 178.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "Ataque:
 50%: 100
 30%: 150
@@ -1532,7 +1532,7 @@ margin_left = 390.0
 margin_top = -315.0
 margin_right = 755.0
 margin_bottom = 178.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 text = "Esperanza:
    0.5 * 100
 + 0.3 * 150

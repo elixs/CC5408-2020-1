@@ -1,0 +1,684 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://shaders/color.tres" type="Shader" id=1]
+[ext_resource path="res://fonts/OpenSans/OpenSans-ExtraBold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Italic.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/OpenSans/OpenSans-SemiBold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://addons/live_cards/LiveCards.gd" type="Script" id=6]
+[ext_resource path="res://addons/live_cards/EmphasisLabel.gd" type="Script" id=7]
+[ext_resource path="res://resources/FontCollection.gd" type="Script" id=8]
+[ext_resource path="res://fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://fonts/OpenSans/OpenSans-LightItalic.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Light.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Bold.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://fonts/OpenSans/OpenSans-BoldItalic.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://icons/multiplayer.svg" type="Texture" id=14]
+[ext_resource path="res://fonts/OpenSans/OpenSans-SemiBoldItalic.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://addons/live_cards/cards/Title.tscn" type="PackedScene" id=16]
+[ext_resource path="res://addons/live_cards/cards/TitleAndBody.tscn" type="PackedScene" id=17]
+[ext_resource path="res://shaders/Accent.tres" type="Material" id=18]
+[ext_resource path="res://textures/04/pearl.svg" type="Texture" id=19]
+[ext_resource path="res://textures/04/path.svg" type="Texture" id=20]
+[ext_resource path="res://textures/04/ships@2x.png" type="Texture" id=21]
+[ext_resource path="res://addons/live_cards/cards/TitleAndPicture.tscn" type="PackedScene" id=22]
+[ext_resource path="res://textures/04/flow@4x.png" type="Texture" id=23]
+[ext_resource path="res://textures/04/ci2.svg" type="Texture" id=24]
+[ext_resource path="res://textures/04/hl2.svg" type="Texture" id=25]
+[ext_resource path="res://textures/04/ci1.svg" type="Texture" id=26]
+[ext_resource path="res://textures/04/int.svg" type="Texture" id=27]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.137255, 0.12549, 0.12549, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 8 )
+regular = ExtResource( 3 )
+italic = ExtResource( 4 )
+bold = ExtResource( 12 )
+bold_italic = ExtResource( 13 )
+light = ExtResource( 11 )
+light_italic = ExtResource( 10 )
+semi_bold = ExtResource( 5 )
+semi_bold_italic = ExtResource( 15 )
+extra_bold = ExtResource( 2 )
+extra_bold_italic = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+extra_spacing_bottom = -8
+font_data = ExtResource( 5 )
+
+[sub_resource type="Resource" id=14]
+script = ExtResource( 8 )
+regular = ExtResource( 3 )
+italic = ExtResource( 4 )
+bold = ExtResource( 12 )
+bold_italic = ExtResource( 13 )
+light = ExtResource( 11 )
+light_italic = ExtResource( 10 )
+semi_bold = ExtResource( 5 )
+semi_bold_italic = ExtResource( 15 )
+extra_bold = ExtResource( 2 )
+extra_bold_italic = ExtResource( 9 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 1 )
+shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 130
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 50
+font_data = ExtResource( 5 )
+
+[sub_resource type="VisualShaderNodeVectorOp" id=8]
+operator = 2
+
+[sub_resource type="VisualShaderNodeTexture" id=9]
+source = 2
+
+[sub_resource type="VisualShaderNodeColorUniform" id=10]
+uniform_name = "FillColor"
+
+[sub_resource type="VisualShader" id=11]
+code = "shader_type canvas_item;
+uniform vec4 FillColor : hint_color;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:8
+	vec3 n_out8p0 = FillColor.rgb;
+	float n_out8p1 = FillColor.a;
+
+// Texture:6
+	vec3 n_out6p0;
+	float n_out6p1;
+	{
+		vec4 _tex_read = texture(TEXTURE , UV.xy);
+		n_out6p0 = _tex_read.rgb;
+		n_out6p1 = _tex_read.a;
+	}
+
+// VectorOp:4
+	vec3 n_out4p0 = n_out8p0 * vec3(n_out6p1);
+
+// Output:0
+	COLOR.rgb = n_out4p0;
+	COLOR.a = n_out6p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 340, 220 )
+nodes/fragment/4/node = SubResource( 8 )
+nodes/fragment/4/position = Vector2( 120, 140 )
+nodes/fragment/6/node = SubResource( 9 )
+nodes/fragment/6/position = Vector2( -160, 280 )
+nodes/fragment/8/node = SubResource( 10 )
+nodes/fragment/8/position = Vector2( -160, 140 )
+nodes/fragment/connections = PoolIntArray( 6, 1, 0, 1, 6, 1, 4, 1, 8, 0, 4, 0, 4, 0, 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = SubResource( 11 )
+shader_param/FillColor = Color( 1, 1, 1, 1 )
+
+[node name="LiveCards" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="00" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" type="Panel" parent="00"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Number" type="Label" parent="00/Panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = -79.9999
+margin_right = -250.0
+margin_bottom = -30.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
+text = "1"
+align = 2
+valign = 1
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+emphasis = 0
+font_size = 40
+font_collection = SubResource( 13 )
+
+[node name="Course" type="Label" parent="00/Panel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = -84.9999
+margin_right = 1051.0
+margin_bottom = -30.0
+rect_pivot_offset = Vector2( 0, 55 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
+text = "CC5408 - Taller de Diseño y Desarrollo de Videojuegos"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+emphasis = 0
+font_size = 40
+font_collection = SubResource( 14 )
+
+[node name="Gamepads" type="TextureRect" parent="00/Panel"]
+material = SubResource( 6 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -498.0
+margin_top = -370.0
+margin_right = -29.9996
+margin_bottom = -30.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 468, 340 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="01" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="01" instance=ExtResource( 16 )]
+
+[node name="Title" parent="01/Panel" index="0"]
+custom_fonts/font = SubResource( 7 )
+text = "Historia, flujo e inmersión. 
+Desafío y obstáculos."
+
+[node name="Subtitle" parent="01/Panel" index="1"]
+text = "· - ·)>"
+
+[node name="Contact" type="Label" parent="01/Panel"]
+material = ExtResource( 18 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -879.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = 99.0
+custom_fonts/font = SubResource( 15 )
+text = "Elías Zelada - ezelada@dcc.uchile.cl"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="02" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="02" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="02/Panel" index="0"]
+text = "Historia"
+
+[node name="Text" parent="02/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Historia  v/s gameplay
+ [b]>[/b]    Mayor interés
+ [b]>[/b]    Experiencias
+ [b]>[/b]    Balance
+ [b]>[/b]    Interactivo v/s tradicional"
+text = " >    Historia  v/s gameplay
+ >    Mayor interés
+ >    Experiencias
+ >    Balance
+ >    Interactivo v/s tradicional"
+
+[node name="03" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="03" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="03/Panel" index="0"]
+text = "Historia y gameplay"
+
+[node name="Text" parent="03/Panel" index="1"]
+bbcode_text = " [b]>[/b]    The String of Pearls
+
+
+
+
+ [b]>[/b]    The Story Machine"
+text = " >    The String of Pearls
+
+
+
+
+ >    The Story Machine"
+
+[node name="TextureRect" type="TextureRect" parent="03/Panel"]
+material = ExtResource( 18 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -737.0
+margin_top = -120.0
+margin_right = 737.0
+margin_bottom = 35.0
+texture = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="04" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="04" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="04/Panel" index="0"]
+text = "Problemas"
+
+[node name="Text" parent="04/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Una buena historia tiene unidad
+ [b]>[/b]    Incontables combinaciones"
+text = " >    Una buena historia tiene unidad
+ >    Incontables combinaciones"
+
+[node name="TextureRect" type="TextureRect" parent="04/Panel"]
+material = ExtResource( 18 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -553.0
+margin_top = -67.499
+margin_right = 553.0
+margin_bottom = 394.501
+texture = ExtResource( 20 )
+
+[node name="05" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="05" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="05/Panel" index="0"]
+text = "Problemas"
+
+[node name="Text" parent="05/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Decepción de los finales múltiples
+     [b]-[/b]    ¿Es el final real?
+     [b]-[/b]    Volver a jugar todo por otro final
+ [b]>[/b]    Acciones limitadas
+ [b]>[/b]    Falta de tragedia"
+text = " >    Decepción de los finales múltiples
+     -    ¿Es el final real?
+     -    Volver a jugar todo por otro final
+ >    Acciones limitadas
+ >    Falta de tragedia"
+
+[node name="06" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="06" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="06/Panel" index="0"]
+text = "Tips"
+
+[node name="Text" parent="06/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Objetivos, obstáculos y conflictos
+ [b]>[/b]    Creerse el cuento
+ [b]>[/b]    Simplicidad y trascendencia
+     [b]-[/b]    Medieval
+     [b]-[/b]    Futurista
+     [b]-[/b]    Guerra
+     [b]-[/b]    Moderno
+     [b]-[/b]    Abstacto"
+text = " >    Objetivos, obstáculos y conflictos
+ >    Creerse el cuento
+ >    Simplicidad y trascendencia
+     -    Medieval
+     -    Futurista
+     -    Guerra
+     -    Moderno
+     -    Abstacto"
+
+[node name="07" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="07" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="07/Panel" index="0"]
+text = "Tips"
+
+[node name="Text" parent="07/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Hero's Journey
+     [b]1)[/b]    El mundo ordinario
+     [b]2)[/b]    Llamada a la aventura
+     [b]3)[/b]    Rechazo de la llamada
+     [b]4)[/b]    Juntarse con un mentor
+     [b]5)[/b]    Cruzar el borde
+     [b]6)[/b]    Pruebas, aliados y enemigos"
+text = " >    Hero's Journey
+     1)    El mundo ordinario
+     2)    Llamada a la aventura
+     3)    Rechazo de la llamada
+     4)    Juntarse con un mentor
+     5)    Cruzar el borde
+     6)    Pruebas, aliados y enemigos"
+
+[node name="08" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="08" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="08/Panel" index="0"]
+text = "Tips"
+
+[node name="Text" parent="08/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Hero's Journey
+     [b]7)[/b]    Acercarse a la cueva
+     [b]8)[/b]    La prueba
+     [b]9)[/b]    La recompensa
+     [b]10)[/b]    El camino de regreso
+     [b]11)[/b]    Resurrección
+     [b]12)[/b]    Regresando con el elixir"
+text = " >    Hero's Journey
+     7)    Acercarse a la cueva
+     8)    La prueba
+     9)    La recompensa
+     10)    El camino de regreso
+     11)    Resurrección
+     12)    Regresando con el elixir"
+
+[node name="09" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="09" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="09/Panel" index="0"]
+text = "Tips"
+
+[node name="Text" parent="09/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Poner la historia a trabajar
+ [b]>[/b]    Ser consistente
+ [b]>[/b]    Hacer la historia accesible"
+text = " >    Poner la historia a trabajar
+ >    Ser consistente
+ >    Hacer la historia accesible"
+
+[node name="TextureRect" type="TextureRect" parent="09/Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -269.0
+margin_top = -6.89752
+margin_right = 269.0
+margin_bottom = 423.102
+texture = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="10" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="10" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="10/Panel" index="0"]
+text = "Tips"
+
+[node name="Text" parent="10/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Clichés
+ [b]>[/b]    Dibujar el mapa"
+text = " >    Clichés
+ >    Dibujar el mapa"
+
+[node name="11" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="11" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="11/Panel" index="0"]
+text = "Flujo"
+
+[node name="Text" parent="11/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Desafío
+     [b]-[/b]    Satisfactorio
+     [b]-[/b]    Individual
+     [b]-[/b]    Dinámico
+ [b]>[/b]    Mihaly  Csikszentmihalyi
+"
+text = " >    Desafío
+     -    Satisfactorio
+     -    Individual
+     -    Dinámico
+ >    Mihaly  Csikszentmihalyi
+"
+
+[node name="12" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="12" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="12/Panel" index="0"]
+text = "Experiencia entretenida y placentera"
+
+[node name="Text" parent="12/Panel" index="1"]
+bbcode_text = " [b]1)[/b]    Tarea completable
+ [b]2)[/b]    Concentración
+ [b]3)[/b]    Objetivos
+ [b]4)[/b]    Feedback
+ [b]5)[/b]    Inmersión
+ [b]6)[/b]    Poder
+ [b]7)[/b]    Olvidar el yo
+ [b]8)[/b]    Tiempo"
+text = " 1)    Tarea completable
+ 2)    Concentración
+ 3)    Objetivos
+ 4)    Feedback
+ 5)    Inmersión
+ 6)    Poder
+ 7)    Olvidar el yo
+ 8)    Tiempo"
+
+[node name="13" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="13" instance=ExtResource( 22 )]
+visible = false
+
+[node name="Title" parent="13/Panel" index="0"]
+text = "Flujo"
+
+[node name="Picture" parent="13/Panel" index="1"]
+texture = ExtResource( 23 )
+stretch_mode = 6
+
+[node name="14" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="14" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="14/Panel" index="0"]
+text = "Ejemplo"
+
+[node name="Text" parent="14/Panel" index="1"]
+bbcode_text = " [b]1)[/b]    Héroe -> Deseo
+ [b]2)[/b]    Evento -> Problema
+ [b]3)[/b]    Intento
+ [b]4)[/b]    Fallo"
+text = " 1)    Héroe -> Deseo
+ 2)    Evento -> Problema
+ 3)    Intento
+ 4)    Fallo"
+
+[node name="15" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="15" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="15/Panel" index="0"]
+text = "Ejemplo"
+
+[node name="Text" parent="15/Panel" index="1"]
+bbcode_text = " [b]5)[/b]    Mala suerte
+ [b]6)[/b]    Problema mayor
+ [b]7)[/b]    Último problema
+ [b]8)[/b]    Solución
+ [b]9)[/b]    Premio"
+text = " 5)    Mala suerte
+ 6)    Problema mayor
+ 7)    Último problema
+ 8)    Solución
+ 9)    Premio"
+
+[node name="16" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="16" instance=ExtResource( 22 )]
+visible = false
+
+[node name="Title" parent="16/Panel" index="0"]
+text = "Curvas de interés"
+
+[node name="Picture" parent="16/Panel" index="1"]
+material = SubResource( 12 )
+texture = ExtResource( 26 )
+
+[node name="17" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="17" instance=ExtResource( 22 )]
+visible = false
+
+[node name="Title" parent="17/Panel" index="0"]
+text = "Curvas de interés"
+
+[node name="Picture" parent="17/Panel" index="1"]
+material = SubResource( 12 )
+texture = ExtResource( 24 )
+
+[node name="18" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="18" instance=ExtResource( 22 )]
+visible = false
+
+[node name="Title" parent="18/Panel" index="0"]
+text = "Curvas de interés - Half-Life 2"
+
+[node name="Picture" parent="18/Panel" index="1"]
+texture = ExtResource( 25 )
+
+[node name="19" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="19" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="19/Panel" index="0"]
+text = "Interés"
+
+[node name="Text" parent="19/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Interés inherente
+ [b]>[/b]    Poesía de presentación
+ [b]>[/b]    Proyección"
+text = " >    Interés inherente
+ >    Poesía de presentación
+ >    Proyección"
+
+[node name="20" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="20" instance=ExtResource( 22 )]
+visible = false
+
+[node name="Title" parent="20/Panel" index="0"]
+text = "Curvas de interés"
+
+[node name="Picture" parent="20/Panel" index="1"]
+texture = ExtResource( 27 )
+
+[editable path="01/Panel"]
+
+[editable path="02/Panel"]
+
+[editable path="03/Panel"]
+
+[editable path="04/Panel"]
+
+[editable path="05/Panel"]
+
+[editable path="06/Panel"]
+
+[editable path="07/Panel"]
+
+[editable path="08/Panel"]
+
+[editable path="09/Panel"]
+
+[editable path="10/Panel"]
+
+[editable path="11/Panel"]
+
+[editable path="12/Panel"]
+
+[editable path="13/Panel"]
+
+[editable path="14/Panel"]
+
+[editable path="15/Panel"]
+
+[editable path="16/Panel"]
+
+[editable path="17/Panel"]
+
+[editable path="18/Panel"]
+
+[editable path="19/Panel"]
+
+[editable path="20/Panel"]
