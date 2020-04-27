@@ -35,7 +35,7 @@ bg_color = Color( 0.137255, 0.12549, 0.12549, 1 )
 size = 40
 font_data = ExtResource( 2 )
 
-[sub_resource type="Resource" id=13]
+[sub_resource type="Resource" id=3]
 script = ExtResource( 8 )
 regular = ExtResource( 3 )
 italic = ExtResource( 4 )
@@ -53,7 +53,7 @@ size = 40
 extra_spacing_bottom = -8
 font_data = ExtResource( 5 )
 
-[sub_resource type="Resource" id=14]
+[sub_resource type="Resource" id=5]
 script = ExtResource( 8 )
 regular = ExtResource( 3 )
 italic = ExtResource( 4 )
@@ -74,20 +74,20 @@ shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
 size = 130
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=8]
 size = 50
 font_data = ExtResource( 5 )
 
-[sub_resource type="VisualShaderNodeVectorOp" id=8]
+[sub_resource type="VisualShaderNodeVectorOp" id=9]
 operator = 2
 
-[sub_resource type="VisualShaderNodeTexture" id=9]
+[sub_resource type="VisualShaderNodeTexture" id=10]
 source = 2
 
-[sub_resource type="VisualShaderNodeColorUniform" id=10]
+[sub_resource type="VisualShaderNodeColorUniform" id=11]
 uniform_name = "FillColor"
 
-[sub_resource type="VisualShader" id=11]
+[sub_resource type="VisualShader" id=12]
 code = "shader_type canvas_item;
 uniform vec4 FillColor : hint_color;
 
@@ -129,16 +129,16 @@ void light() {
 mode = 1
 flags/light_only = false
 nodes/fragment/0/position = Vector2( 340, 220 )
-nodes/fragment/4/node = SubResource( 8 )
+nodes/fragment/4/node = SubResource( 9 )
 nodes/fragment/4/position = Vector2( 120, 140 )
-nodes/fragment/6/node = SubResource( 9 )
+nodes/fragment/6/node = SubResource( 10 )
 nodes/fragment/6/position = Vector2( -160, 280 )
-nodes/fragment/8/node = SubResource( 10 )
+nodes/fragment/8/node = SubResource( 11 )
 nodes/fragment/8/position = Vector2( -160, 140 )
 nodes/fragment/connections = PoolIntArray( 6, 1, 0, 1, 6, 1, 4, 1, 8, 0, 4, 0, 4, 0, 0, 0 )
 
-[sub_resource type="ShaderMaterial" id=12]
-shader = SubResource( 11 )
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 12 )
 shader_param/FillColor = Color( 1, 1, 1, 1 )
 
 [node name="LiveCards" type="Node2D"]
@@ -176,7 +176,7 @@ __meta__ = {
 }
 emphasis = 0
 font_size = 40
-font_collection = SubResource( 13 )
+font_collection = SubResource( 3 )
 
 [node name="Course" type="Label" parent="00/Panel"]
 anchor_top = 1.0
@@ -196,7 +196,7 @@ __meta__ = {
 }
 emphasis = 0
 font_size = 40
-font_collection = SubResource( 14 )
+font_collection = SubResource( 5 )
 
 [node name="Gamepads" type="TextureRect" parent="00/Panel"]
 material = SubResource( 6 )
@@ -223,8 +223,8 @@ layer = -1
 
 [node name="Title" parent="01/Panel" index="0"]
 custom_fonts/font = SubResource( 7 )
-text = "Historia, flujo e inmersión. 
-Desafío y obstáculos."
+text = "Historia, flujo e inmersión
+Desafío y obstáculos"
 
 [node name="Subtitle" parent="01/Panel" index="1"]
 text = "· - ·)>"
@@ -237,7 +237,7 @@ margin_left = -879.0
 margin_top = 30.0
 margin_right = -30.0
 margin_bottom = 99.0
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 8 )
 text = "Elías Zelada - ezelada@dcc.uchile.cl"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -586,7 +586,7 @@ visible = false
 text = "Curvas de interés"
 
 [node name="Picture" parent="16/Panel" index="1"]
-material = SubResource( 12 )
+material = SubResource( 13 )
 texture = ExtResource( 26 )
 
 [node name="17" type="CanvasLayer" parent="."]
@@ -599,7 +599,7 @@ visible = false
 text = "Curvas de interés"
 
 [node name="Picture" parent="17/Panel" index="1"]
-material = SubResource( 12 )
+material = SubResource( 13 )
 texture = ExtResource( 24 )
 
 [node name="18" type="CanvasLayer" parent="."]

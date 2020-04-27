@@ -1,0 +1,342 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://fonts/OpenSans/OpenSans-ExtraBold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/OpenSans/OpenSans-SemiBold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Italic.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/OpenSans/OpenSans-LightItalic.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://fonts/OpenSans/OpenSans-SemiBoldItalic.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://fonts/OpenSans/OpenSans-BoldItalic.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Light.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://icons/multiplayer.svg" type="Texture" id=10]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Bold.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://resources/FontCollection.gd" type="Script" id=12]
+[ext_resource path="res://addons/live_cards/LiveCards.gd" type="Script" id=13]
+[ext_resource path="res://addons/live_cards/EmphasisLabel.gd" type="Script" id=14]
+[ext_resource path="res://shaders/color.tres" type="Shader" id=15]
+[ext_resource path="res://addons/live_cards/cards/Title.tscn" type="PackedScene" id=16]
+[ext_resource path="res://shaders/Accent.tres" type="Material" id=17]
+[ext_resource path="res://addons/live_cards/cards/TitleAndBody.tscn" type="PackedScene" id=18]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.137255, 0.12549, 0.12549, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 12 )
+regular = ExtResource( 4 )
+italic = ExtResource( 3 )
+bold = ExtResource( 11 )
+bold_italic = ExtResource( 7 )
+light = ExtResource( 9 )
+light_italic = ExtResource( 5 )
+semi_bold = ExtResource( 2 )
+semi_bold_italic = ExtResource( 6 )
+extra_bold = ExtResource( 1 )
+extra_bold_italic = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+extra_spacing_bottom = -8
+font_data = ExtResource( 2 )
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 12 )
+regular = ExtResource( 4 )
+italic = ExtResource( 3 )
+bold = ExtResource( 11 )
+bold_italic = ExtResource( 7 )
+light = ExtResource( 9 )
+light_italic = ExtResource( 5 )
+semi_bold = ExtResource( 2 )
+semi_bold_italic = ExtResource( 6 )
+extra_bold = ExtResource( 1 )
+extra_bold_italic = ExtResource( 8 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 15 )
+shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 50
+font_data = ExtResource( 2 )
+
+[node name="LiveCards" type="Node2D"]
+script = ExtResource( 13 )
+
+[node name="00" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" type="Panel" parent="00"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Number" type="Label" parent="00/Panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = -79.9999
+margin_right = -250.0
+margin_bottom = -30.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
+text = "1"
+align = 2
+valign = 1
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+emphasis = 0
+font_size = 40
+font_collection = SubResource( 11 )
+
+[node name="Course" type="Label" parent="00/Panel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = -84.9999
+margin_right = 1051.0
+margin_bottom = -30.0
+rect_pivot_offset = Vector2( 0, 55 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
+text = "CC5408 - Taller de Diseño y Desarrollo de Videojuegos"
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+emphasis = 0
+font_size = 40
+font_collection = SubResource( 12 )
+
+[node name="Gamepads" type="TextureRect" parent="00/Panel"]
+material = SubResource( 6 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -498.0
+margin_top = -370.0
+margin_right = -29.9996
+margin_bottom = -30.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 468, 340 )
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="01" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="01" instance=ExtResource( 16 )]
+
+[node name="Title" parent="01/Panel" index="0"]
+text = "Objetivos
+Poder del jugador"
+
+[node name="Subtitle" parent="01/Panel" index="1"]
+text = "· - ·)?"
+
+[node name="Contact" type="Label" parent="01/Panel"]
+material = ExtResource( 17 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -879.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = 99.0
+custom_fonts/font = SubResource( 10 )
+text = "Elías Zelada - ezelada@dcc.uchile.cl"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="02" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="02" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="02/Panel" index="0"]
+text = "Objetivos"
+
+[node name="Text" parent="02/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Fundamental
+ [b]>[/b]    Motivación
+ [b]>[/b]    Tono
+ [b]>[/b]    Estructura
+     [b]-[/b]    Tipo
+     [b]-[/b]    Lista
+     [b]-[/b]    Jugador
+ [b]>[/b]    Desafío / Lograble"
+text = " >    Fundamental
+ >    Motivación
+ >    Tono
+ >    Estructura
+     -    Tipo
+     -    Lista
+     -    Jugador
+ >    Desafío / Lograble"
+
+[node name="03" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="03" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="03/Panel" index="0"]
+text = "Tipos de objetivo"
+
+[node name="Text" parent="03/Panel" index="1"]
+bbcode_text = " [b]1)[/b]    Captura
+ [b]2)[/b]    Persecución
+ [b]3)[/b]    Carrera
+ [b]4)[/b]    Alineación
+ [b]5)[/b]    Rescate o escape
+"
+text = " 1)    Captura
+ 2)    Persecución
+ 3)    Carrera
+ 4)    Alineación
+ 5)    Rescate o escape
+"
+
+[node name="04" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="04" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="04/Panel" index="0"]
+text = "Tipos de objetivo"
+
+[node name="Text" parent="04/Panel" index="1"]
+bbcode_text = " [b]6)[/b]    Acto prohibido
+ [b]7)[/b]    Construcción
+ [b]8)[/b]    Exploración
+ [b]9)[/b]    Solución
+ [b]10)[/b]    Ingenio"
+text = " 6)    Acto prohibido
+ 7)    Construcción
+ 8)    Exploración
+ 9)    Solución
+ 10)    Ingenio"
+
+[node name="05" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="05" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="05/Panel" index="0"]
+text = "Objetivos"
+
+[node name="Text" parent="05/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Explícitos
+     [b]-[/b]    Recolectar
+     [b]-[/b]    Eliminar
+     [b]-[/b]    Afecto
+ [b]>[/b]    Implícitos
+     [b]-[/b]    Prosperar
+     [b]-[/b]    Creatividad
+     [b]-[/b]    Explorar"
+text = " >    Explícitos
+     -    Recolectar
+     -    Eliminar
+     -    Afecto
+ >    Implícitos
+     -    Prosperar
+     -    Creatividad
+     -    Explorar"
+
+[node name="06" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="06" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="06/Panel" index="0"]
+text = "Mal objetivo"
+
+[node name="Text" parent="06/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Falta de información
+ [b]>[/b]    Poca claridad
+ [b]>[/b]    Malos indicadores"
+text = " >    Falta de información
+ >    Poca claridad
+ >    Malos indicadores"
+
+[node name="07" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="07" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="07/Panel" index="0"]
+text = "Poder del jugador"
+
+[node name="Text" parent="07/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Conjunto de acciones
+ [b]>[/b]    Libertad
+ [b]>[/b]    Romper reglas
+ [b]>[/b]    Exploits
+     [b]-[/b]    Testing
+     [b]-[/b]    Diseño
+     [b]-[/b]    Físicas"
+text = " >    Conjunto de acciones
+ >    Libertad
+ >    Romper reglas
+ >    Exploits
+     -    Testing
+     -    Diseño
+     -    Físicas"
+
+[node name="08" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="08" instance=ExtResource( 18 )]
+visible = false
+
+[node name="Title" parent="08/Panel" index="0"]
+text = "Poder del jugador"
+
+[node name="Text" parent="08/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Establecer limitaciones
+ [b]>[/b]    Sucesión de eventos
+ [b]>[/b]    Control de cámara
+ [b]>[/b]    Expectativa"
+text = " >    Establecer limitaciones
+ >    Sucesión de eventos
+ >    Control de cámara
+ >    Expectativa"
+
+[editable path="01/Panel"]
+
+[editable path="02/Panel"]
+
+[editable path="03/Panel"]
+
+[editable path="04/Panel"]
+
+[editable path="05/Panel"]
+
+[editable path="06/Panel"]
+
+[editable path="07/Panel"]
+
+[editable path="08/Panel"]
