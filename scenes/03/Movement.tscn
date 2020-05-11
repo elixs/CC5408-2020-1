@@ -37,14 +37,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
-margin_right = 299.0
+margin_right = 300.0
 margin_bottom = 14.0
 text = "Speed"
 align = 1
 
 [node name="HSlider" type="HSlider" parent="CanvasLayer/Panel/VBoxContainer"]
 margin_top = 18.0
-margin_right = 299.0
+margin_right = 300.0
 margin_bottom = 34.0
 max_value = 20.0
 value = 10.0
@@ -54,14 +54,14 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
 margin_top = 38.0
-margin_right = 299.0
+margin_right = 300.0
 margin_bottom = 52.0
 text = "Friction"
 align = 1
 
 [node name="HSlider2" type="HSlider" parent="CanvasLayer/Panel/VBoxContainer"]
 margin_top = 56.0
-margin_right = 299.0
+margin_right = 300.0
 margin_bottom = 72.0
 max_value = 1.0
 step = 0.001
@@ -72,7 +72,7 @@ __meta__ = {
 
 [node name="OptionButton" type="OptionButton" parent="CanvasLayer/Panel/VBoxContainer"]
 margin_top = 76.0
-margin_right = 299.0
+margin_right = 300.0
 margin_bottom = 96.0
 focus_mode = 0
 enabled_focus_mode = 0
