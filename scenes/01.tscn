@@ -25,25 +25,25 @@
 [ext_resource path="res://scenes/01/Kao-chan.tscn" type="PackedScene" id=27]
 [ext_resource path="res://addons/live_cards/cards/Empty.tscn" type="PackedScene" id=28]
 
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.137255, 0.12549, 0.12549, 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=9]
 size = 40
 font_data = ExtResource( 10 )
 
-[sub_resource type="StyleBoxEmpty" id=21]
+[sub_resource type="StyleBoxEmpty" id=10]
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=11]
 size = 40
 extra_spacing_bottom = -8
 font_data = ExtResource( 2 )
 
-[sub_resource type="ShaderMaterial" id=22]
+[sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 15 )
 shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=13]
 shader = ExtResource( 15 )
 shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
 
@@ -51,36 +51,36 @@ shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
 size = 50
 font_data = ExtResource( 2 )
 
-[sub_resource type="PhysicsMaterial" id=8]
+[sub_resource type="PhysicsMaterial" id=14]
 bounce = 1.0
 
-[sub_resource type="SegmentShape2D" id=9]
+[sub_resource type="SegmentShape2D" id=15]
 b = Vector2( 1920, 0 )
 
-[sub_resource type="SegmentShape2D" id=10]
+[sub_resource type="SegmentShape2D" id=16]
 b = Vector2( 1920, 0 )
 
-[sub_resource type="SegmentShape2D" id=11]
+[sub_resource type="SegmentShape2D" id=17]
 b = Vector2( 0, 1080 )
 
-[sub_resource type="SegmentShape2D" id=12]
+[sub_resource type="SegmentShape2D" id=18]
 b = Vector2( 0, 1080 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 540, 50 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 140, 100 )
 
-[sub_resource type="CapsuleShape2D" id=15]
+[sub_resource type="CapsuleShape2D" id=21]
 radius = 70.0
 height = 45.0
 
-[sub_resource type="ShaderMaterial" id=16]
+[sub_resource type="ShaderMaterial" id=22]
 shader = ExtResource( 15 )
 shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=23]
 tracks/0/type = "value"
 tracks/0/path = NodePath("FinishFlag:scale")
 tracks/0/interp = 1
@@ -94,14 +94,14 @@ tracks/0/keys = {
 "values": [ Vector2( 0.3, 1e-05 ), Vector2( 0.3, 0.3 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=18]
+[sub_resource type="CircleShape2D" id=24]
 radius = 60.0
 
-[sub_resource type="ShaderMaterial" id=19]
+[sub_resource type="ShaderMaterial" id=25]
 shader = ExtResource( 15 )
 shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="DynamicFont" id=26]
 size = 60
 font_data = ExtResource( 10 )
 
@@ -114,7 +114,7 @@ layer = -1
 [node name="Panel" type="Panel" parent="00"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -128,7 +128,7 @@ margin_left = -300.0
 margin_top = -79.9999
 margin_right = -250.0
 margin_bottom = -30.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
 text = "1"
 align = 2
@@ -139,7 +139,7 @@ __meta__ = {
 }
 emphasis = 0
 font_size = 40
-font_collection = SubResource( 21 )
+font_collection = SubResource( 10 )
 
 [node name="Course" type="Label" parent="00/Panel"]
 anchor_top = 1.0
@@ -149,7 +149,7 @@ margin_top = -84.9999
 margin_right = 1051.0
 margin_bottom = -30.0
 rect_pivot_offset = Vector2( 0, 55 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
 text = "CC5408 - Taller de Diseño y Desarrollo de Videojuegos"
 script = ExtResource( 13 )
@@ -159,10 +159,10 @@ __meta__ = {
 }
 emphasis = 0
 font_size = 40
-font_collection = SubResource( 22 )
+font_collection = SubResource( 12 )
 
 [node name="Gamepads" type="TextureRect" parent="00/Panel"]
-material = SubResource( 6 )
+material = SubResource( 13 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -209,40 +209,40 @@ script = ExtResource( 26 )
 [node name="Limits" type="Node2D" parent="01/KaoGame"]
 
 [node name="Bottom" type="StaticBody2D" parent="01/KaoGame/Limits"]
-physics_material_override = SubResource( 8 )
+physics_material_override = SubResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="01/KaoGame/Limits/Bottom"]
 position = Vector2( 0, 1080 )
-shape = SubResource( 9 )
+shape = SubResource( 15 )
 
 [node name="Top" type="StaticBody2D" parent="01/KaoGame/Limits"]
-physics_material_override = SubResource( 8 )
+physics_material_override = SubResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="01/KaoGame/Limits/Top"]
-shape = SubResource( 10 )
+shape = SubResource( 16 )
 
 [node name="Left" type="StaticBody2D" parent="01/KaoGame/Limits"]
-physics_material_override = SubResource( 8 )
+physics_material_override = SubResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="01/KaoGame/Limits/Left"]
-shape = SubResource( 11 )
+shape = SubResource( 17 )
 
 [node name="Right" type="StaticBody2D" parent="01/KaoGame/Limits"]
-physics_material_override = SubResource( 8 )
+physics_material_override = SubResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="01/KaoGame/Limits/Right"]
 position = Vector2( 1921.95, 0 )
-shape = SubResource( 12 )
+shape = SubResource( 18 )
 
 [node name="Obstacles" type="StaticBody2D" parent="01/KaoGame/Limits"]
 position = Vector2( 540, 1030 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="01/KaoGame/Limits/Obstacles"]
-shape = SubResource( 13 )
+shape = SubResource( 19 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="01/KaoGame/Limits/Obstacles"]
 position = Vector2( 1210, -75 )
-shape = SubResource( 14 )
+shape = SubResource( 20 )
 
 [node name="Flag" type="Area2D" parent="01/KaoGame"]
 position = Vector2( 1763, 789 )
@@ -252,17 +252,17 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="01/KaoGame/Flag"]
-shape = SubResource( 15 )
+shape = SubResource( 21 )
 
 [node name="FinishFlag" type="Sprite" parent="01/KaoGame/Flag"]
-material = SubResource( 16 )
+material = SubResource( 22 )
 position = Vector2( 0, 77 )
 scale = Vector2( 0.3, 1e-05 )
 texture = ExtResource( 19 )
 offset = Vector2( 0, -248 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="01/KaoGame/Flag"]
-anims/activate = SubResource( 17 )
+anims/activate = SubResource( 23 )
 
 [node name="Key" type="Area2D" parent="01/KaoGame"]
 position = Vector2( 90, 700 )
@@ -272,10 +272,10 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="01/KaoGame/Key"]
-shape = SubResource( 18 )
+shape = SubResource( 24 )
 
 [node name="Key" type="Sprite" parent="01/KaoGame/Key"]
-material = SubResource( 19 )
+material = SubResource( 25 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 18 )
 
@@ -415,7 +415,7 @@ margin_left = -274.0
 margin_top = -113.0
 margin_right = -29.9999
 margin_bottom = -30.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 26 )
 text = "00:00:00"
 script = ExtResource( 6 )
 __meta__ = {

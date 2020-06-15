@@ -41,7 +41,7 @@ bg_color = Color( 0.137255, 0.12549, 0.12549, 1 )
 size = 40
 font_data = ExtResource( 4 )
 
-[sub_resource type="Resource" id=13]
+[sub_resource type="Resource" id=3]
 script = ExtResource( 12 )
 regular = ExtResource( 3 )
 italic = ExtResource( 7 )
@@ -59,7 +59,7 @@ size = 40
 extra_spacing_bottom = -8
 font_data = ExtResource( 10 )
 
-[sub_resource type="Resource" id=14]
+[sub_resource type="Resource" id=5]
 script = ExtResource( 12 )
 regular = ExtResource( 3 )
 italic = ExtResource( 7 )
@@ -80,15 +80,15 @@ shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
 size = 50
 font_data = ExtResource( 10 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=8]
 size = 60
 font_data = ExtResource( 29 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=9]
 size = 50
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=10]
 size = 50
 font_data = ExtResource( 3 )
 
@@ -127,7 +127,7 @@ __meta__ = {
 }
 emphasis = 0
 font_size = 40
-font_collection = SubResource( 13 )
+font_collection = SubResource( 3 )
 
 [node name="Course" type="Label" parent="00/Panel"]
 anchor_top = 1.0
@@ -147,7 +147,7 @@ __meta__ = {
 }
 emphasis = 0
 font_size = 40
-font_collection = SubResource( 14 )
+font_collection = SubResource( 5 )
 
 [node name="Gamepads" type="TextureRect" parent="00/Panel"]
 material = SubResource( 6 )
@@ -435,9 +435,9 @@ visible = false
 text = "Steering"
 
 [node name="Text" parent="17/Panel" index="1"]
-custom_fonts/mono_font = SubResource( 10 )
-custom_fonts/bold_font = SubResource( 11 )
-custom_fonts/normal_font = SubResource( 12 )
+custom_fonts/mono_font = SubResource( 8 )
+custom_fonts/bold_font = SubResource( 9 )
+custom_fonts/normal_font = SubResource( 10 )
 bbcode_text = " [b]>[/b]    Seek
  [b]>[/b]    Flee
  [b]>[/b]    Arrive
