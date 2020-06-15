@@ -158,6 +158,7 @@ __meta__ = {
 layer = -1
 
 [node name="Panel" parent="01" instance=ExtResource( 16 )]
+visible = false
 
 [node name="Title" parent="01/Panel" index="0"]
 text = "Interfaces de usuario"
@@ -481,22 +482,21 @@ text = " 1)    Inspiración
 layer = -1
 
 [node name="Panel" parent="22" instance=ExtResource( 19 )]
-visible = false
 
 [node name="Title" parent="22/Panel" index="0"]
 text = "Tips"
 
 [node name="Text" parent="22/Panel" index="1"]
-bbcode_text = " [b]1)[/b]    Balance
- [b]2)[/b]    Metáforas
- [b]3)[/b]    Si luce diferente, debería actuar diferente
- [b]4)[/b]    Pruebas
- [b]5)[/b]    Romper reglas"
-text = " 1)    Balance
- 2)    Metáforas
- 3)    Si luce diferente, debería actuar diferente
- 4)    Pruebas
- 5)    Romper reglas"
+bbcode_text = " [b]6)[/b]    Balance
+ [b]7)[/b]    Metáforas
+ [b]8)[/b]    Si luce diferente, debería actuar diferente
+ [b]9)[/b]    Pruebas
+ [b]10)[/b]    Romper reglas"
+text = " 6)    Balance
+ 7)    Metáforas
+ 8)    Si luce diferente, debería actuar diferente
+ 9)    Pruebas
+ 10)    Romper reglas"
 
 [editable path="01/Panel"]
 
