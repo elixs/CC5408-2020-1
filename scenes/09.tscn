@@ -1,0 +1,536 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://fonts/OpenSans/OpenSans-SemiBoldItalic.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://fonts/OpenSans/OpenSans-BoldItalic.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://icons/multiplayer.svg" type="Texture" id=3]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Italic.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Bold.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://fonts/OpenSans/OpenSans-LightItalic.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://fonts/OpenSans/OpenSans-ExtraBold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://fonts/OpenSans/OpenSans-SemiBold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Light.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://fonts/OpenSans/OpenSans-Regular.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://resources/FontCollection.gd" type="Script" id=12]
+[ext_resource path="res://addons/live_cards/EmphasisLabel.gd" type="Script" id=13]
+[ext_resource path="res://addons/live_cards/LiveCards.gd" type="Script" id=14]
+[ext_resource path="res://shaders/color.tres" type="Shader" id=15]
+[ext_resource path="res://addons/live_cards/cards/Title.tscn" type="PackedScene" id=16]
+[ext_resource path="res://addons/live_cards/cards/TitleAndBody.tscn" type="PackedScene" id=17]
+[ext_resource path="res://shaders/Accent.tres" type="Material" id=18]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.137255, 0.12549, 0.12549, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 7 )
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 12 )
+regular = ExtResource( 11 )
+italic = ExtResource( 4 )
+bold = ExtResource( 5 )
+bold_italic = ExtResource( 2 )
+light = ExtResource( 10 )
+light_italic = ExtResource( 6 )
+semi_bold = ExtResource( 8 )
+semi_bold_italic = ExtResource( 1 )
+extra_bold = ExtResource( 7 )
+extra_bold_italic = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+extra_spacing_bottom = -8
+font_data = ExtResource( 8 )
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 12 )
+regular = ExtResource( 11 )
+italic = ExtResource( 4 )
+bold = ExtResource( 5 )
+bold_italic = ExtResource( 2 )
+light = ExtResource( 10 )
+light_italic = ExtResource( 6 )
+semi_bold = ExtResource( 8 )
+semi_bold_italic = ExtResource( 1 )
+extra_bold = ExtResource( 7 )
+extra_bold_italic = ExtResource( 9 )
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 15 )
+shader_param/FillColor = Color( 1, 0.45098, 0.0823529, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 50
+font_data = ExtResource( 8 )
+
+[node name="LiveCards" type="Node2D"]
+script = ExtResource( 14 )
+
+[node name="00" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" type="Panel" parent="00"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Number" type="Label" parent="00/Panel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = -79.9999
+margin_right = -250.0
+margin_bottom = -30.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
+text = "1"
+align = 2
+valign = 1
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+emphasis = 0
+font_size = 40
+font_collection = SubResource( 3 )
+
+[node name="Course" type="Label" parent="00/Panel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = -84.9999
+margin_right = 1051.0
+margin_bottom = -30.0
+rect_pivot_offset = Vector2( 0, 55 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 0.45098, 0.0823529, 1 )
+text = "CC5408 - Taller de Diseño y Desarrollo de Videojuegos"
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+emphasis = 0
+font_size = 40
+font_collection = SubResource( 5 )
+
+[node name="Gamepads" type="TextureRect" parent="00/Panel"]
+material = SubResource( 6 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -498.0
+margin_top = -370.0
+margin_right = -29.9996
+margin_bottom = -30.0
+rect_scale = Vector2( 0.6, 0.6 )
+rect_pivot_offset = Vector2( 468, 340 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="01" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="01" instance=ExtResource( 16 )]
+
+[node name="Title" parent="01/Panel" index="0"]
+text = "Balance"
+
+[node name="Subtitle" parent="01/Panel" index="1"]
+text = "· - ·)?"
+
+[node name="Contact" type="Label" parent="01/Panel"]
+material = ExtResource( 18 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -879.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = 99.0
+custom_fonts/font = SubResource( 7 )
+text = "Elías Zelada - ezelada@dcc.uchile.cl"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="02" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="02" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="02/Panel" index="0"]
+text = "Balance"
+
+[node name="Text" parent="02/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Complejo
+ [b]>[/b]    Necesario
+ [b]>[/b]    Decepción
+ [b]>[/b]    Experiencia"
+text = " >    Complejo
+ >    Necesario
+ >    Decepción
+ >    Experiencia"
+
+[node name="03" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="03" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="03/Panel" index="0"]
+text = "Balance 1: Equidad (Fairness)"
+
+[node name="Text" parent="03/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Juegos simétricos
+     [b]-[/b]   Turnos
+ [b]>[/b]    Juegos asimétricos
+     [b]1)[/b]   Situación real
+     [b]2)[/b]   Variedad
+     [b]3)[/b]   Personalización
+     [b]4)[/b]   Nivelación
+     [b]5)[/b]   Situaciones interesantes"
+text = " >    Juegos simétricos
+     -   Turnos
+ >    Juegos asimétricos
+     1)   Situación real
+     2)   Variedad
+     3)   Personalización
+     4)   Nivelación
+     5)   Situaciones interesantes"
+
+[node name="04" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="04" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="04/Panel" index="0"]
+text = "Balance 2: Desafío vs éxito"
+
+[node name="Text" parent="04/Panel" index="1"]
+bbcode_text = " [b]1)[/b]    Aumentar la dificultad con cada éxito
+ [b]2)[/b]    Permitir avanzar rápido por partes fáciles
+ [b]3)[/b]    Crear capas de dificultad
+ [b]4)[/b]    Niveles de dificultad
+ [b]5)[/b]    Hacer pruebas con muchos jugadores
+ [b]6)[/b]    Dar un descanso"
+text = " 1)    Aumentar la dificultad con cada éxito
+ 2)    Permitir avanzar rápido por partes fáciles
+ 3)    Crear capas de dificultad
+ 4)    Niveles de dificultad
+ 5)    Hacer pruebas con muchos jugadores
+ 6)    Dar un descanso"
+
+[node name="05" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="05" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="05/Panel" index="0"]
+text = "Balance 3: Decisiones significativas"
+
+[node name="Text" parent="05/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Impacto
+ [b]>[/b]    Estrategia dominante
+ [b]>[/b]    Triangularidad"
+text = " >    Impacto
+ >    Estrategia dominante
+ >    Triangularidad"
+
+[node name="06" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="06" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="06/Panel" index="0"]
+text = "Balance 4: Habilidad vs oportunidad"
+
+[node name="Text" parent="06/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Preferencia
+ [b]>[/b]    Alternar
+ [b]>[/b]    Adictivo
+     [b]1)[/b]    Ejercitando habilidad
+     [b]2)[/b]    Tomando riesgos
+     [b]3)[/b]    Estableciendo estrategia
+"
+text = " >    Preferencia
+ >    Alternar
+ >    Adictivo
+     1)    Ejercitando habilidad
+     2)    Tomando riesgos
+     3)    Estableciendo estrategia
+"
+
+[node name="07" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="07" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="07/Panel" index="0"]
+text = "Balance 5: Habilidad física vs mental"
+
+[node name="Text" parent="07/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Destreza
+ [b]>[/b]    Pensar
+ [b]>[/b]    Combinar y alternar
+ [b]>[/b]    Público objetivo"
+text = " >    Destreza
+ >    Pensar
+ >    Combinar y alternar
+ >    Público objetivo"
+
+[node name="08" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="08" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="08/Panel" index="0"]
+text = "Balance 6: Competir vs cooperar"
+
+[node name="Text" parent="08/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Innato
+ [b]>[/b]    Interacción
+ [b]>[/b]    Mezcla"
+text = " >    Innato
+ >    Interacción
+ >    Mezcla"
+
+[node name="09" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="09" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="09/Panel" index="0"]
+text = "Balance 7: Duración"
+
+[node name="Text" parent="09/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Condición victoria/derrota
+ [b]>[/b]    Tiempo mínimo
+ [b]>[/b]    Límite"
+text = " >    Condición victoria/derrota
+ >    Tiempo mínimo
+ >    Límite"
+
+[node name="10" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="10" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="10/Panel" index="0"]
+text = "Balance 8: Recompensas "
+
+[node name="Text" parent="10/Panel" index="1"]
+bbcode_text = " [b]1)[/b]    Elogio
+ [b]2)[/b]    Puntos
+ [b]3)[/b]    Prologar el juego
+ [b]4)[/b]    Nueva puerta
+ [b]5)[/b]    Espectáculo"
+text = " 1)    Elogio
+ 2)    Puntos
+ 3)    Prologar el juego
+ 4)    Nueva puerta
+ 5)    Espectáculo"
+
+[node name="11" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="11" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="11/Panel" index="0"]
+text = "Balance 8: Recompensas "
+
+[node name="Text" parent="11/Panel" index="1"]
+bbcode_text = " [b]6)[/b]    Expresión
+ [b]7)[/b]    Poderes
+ [b]8)[/b]    Recursos
+ [b]9)[/b]    Status
+ [b]10)[/b]  100%"
+text = " 6)    Expresión
+ 7)    Poderes
+ 8)    Recursos
+ 9)    Status
+ 10)  100%"
+
+[node name="12" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="12" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="12/Panel" index="0"]
+text = "Balance 9: Castigo"
+
+[node name="Text" parent="12/Panel" index="1"]
+bbcode_text = " [b]1)[/b]    Valor propio
+ [b]2)[/b]    Tomar riesgos
+ [b]3)[/b]    Desafío
+ [b]4)[/b]    Vergüenza
+ [b]5)[/b]    Pérdida de puntos"
+text = " 1)    Valor propio
+ 2)    Tomar riesgos
+ 3)    Desafío
+ 4)    Vergüenza
+ 5)    Pérdida de puntos"
+
+[node name="13" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="13" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="13/Panel" index="0"]
+text = "Balance 9: Castigo"
+
+[node name="Text" parent="13/Panel" index="1"]
+bbcode_text = " [b]6)[/b]    Acortar el juego
+ [b]7)[/b]    Terminar el juego
+ [b]8)[/b]    Retroceder
+ [b]9)[/b]    Quitar poderes
+ [b]10)[/b]  Quitar recursos"
+text = " 6)    Acortar el juego
+ 7)    Terminar el juego
+ 8)    Retroceder
+ 9)    Quitar poderes
+ 10)  Quitar recursos"
+
+[node name="14" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="14" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="14/Panel" index="0"]
+text = "Balance 10: Libertad vs control"
+
+[node name="Text" parent="14/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Interactivo
+ [b]>[/b]    Más trabajo
+ [b]>[/b]    Aburrido
+ [b]>[/b]    Cuándo y cuánto"
+text = " >    Interactivo
+ >    Más trabajo
+ >    Aburrido
+ >    Cuándo y cuánto"
+
+[node name="15" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="15" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="15/Panel" index="0"]
+text = "Balance 11: Simple vs complejo"
+
+[node name="Text" parent="15/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Innata
+ [b]>[/b]    Emergente
+ [b]>[/b]    Menos es más
+ [b]>[/b]    Carácter / Personalidad
+
+"
+text = " >    Innata
+ >    Emergente
+ >    Menos es más
+ >    Carácter / Personalidad
+
+"
+
+[node name="16" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="16" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="16/Panel" index="0"]
+text = "Balance 12: Detalle vs imaginación"
+
+[node name="Text" parent="16/Panel" index="1"]
+bbcode_text = " [b]>[/b]    Detallar solo lo que puedan hacer bien
+ [b]>[/b]    Detalles que la imaginación pueda usar
+ [b]>[/b]    Palabras familiares
+ [b]>[/b]    Efecto binocular
+ [b]>[/b]    Detalles que inspiren a la imaginación"
+text = " >    Detallar solo lo que puedan hacer bien
+ >    Detalles que la imaginación pueda usar
+ >    Palabras familiares
+ >    Efecto binocular
+ >    Detalles que inspiren a la imaginación"
+
+[node name="17" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Panel" parent="17" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Title" parent="17/Panel" index="0"]
+text = "Métodos de balance"
+
+[node name="Text" parent="17/Panel" index="1"]
+bbcode_text = " [b]1)[/b]    Definición del problema
+ [b]2)[/b]    Dobles y mitades
+ [b]3)[/b]    Entrenar la intuición
+ [b]4)[/b]    Documentar el modelo
+ [b]5)[/b]    Modificar el modelo junto al juego
+ [b]6)[/b]    Planificar
+ [b]7)[/b]    Dejar a los jugadores"
+text = " 1)    Definición del problema
+ 2)    Dobles y mitades
+ 3)    Entrenar la intuición
+ 4)    Documentar el modelo
+ 5)    Modificar el modelo junto al juego
+ 6)    Planificar
+ 7)    Dejar a los jugadores"
+
+[editable path="01/Panel"]
+
+[editable path="02/Panel"]
+
+[editable path="03/Panel"]
+
+[editable path="04/Panel"]
+
+[editable path="05/Panel"]
+
+[editable path="06/Panel"]
+
+[editable path="07/Panel"]
+
+[editable path="08/Panel"]
+
+[editable path="09/Panel"]
+
+[editable path="10/Panel"]
+
+[editable path="11/Panel"]
+
+[editable path="12/Panel"]
+
+[editable path="13/Panel"]
+
+[editable path="14/Panel"]
+
+[editable path="15/Panel"]
+
+[editable path="16/Panel"]
+
+[editable path="17/Panel"]
