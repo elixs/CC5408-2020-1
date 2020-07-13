@@ -291,13 +291,13 @@ bbcode_text = " [b]1)[/b]    Presencia
  [b]2)[/b]    Discurso
  [b]3)[/b]    Foco
  [b]4)[/b]    Data
- [b]4)[/b]    Intervención
+ [b]5)[/b]    Intervención
      [b]-[/b]    Thinking aloud"
 text = " 1)    Presencia
  2)    Discurso
  3)    Foco
  4)    Data
- 4)    Intervención
+ 5)    Intervención
      -    Thinking aloud"
 
 [node name="09" type="CanvasLayer" parent="."]

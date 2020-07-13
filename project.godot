@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="CC5408"
-run/main_scene="res://scenes/10.tscn"
+run/main_scene="res://scenes/11.tscn"
 config/icon="res://icon.png"
 
 [display]
